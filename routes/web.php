@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::namespace('Frontend')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+
+});
 
 Auth::routes();
 

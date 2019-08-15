@@ -19,7 +19,7 @@ return [
     ],
     'admins' => [
         'driver' => 'eloquent',
-        'model' => \App\Model\Admin::class,
+        'model' => App\Model\Admin::class,
     ],
 
     /*
@@ -84,7 +84,7 @@ return [
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => \App\Model\Admin::class,
+            'model' => App\Model\Admin::class,
         ],
 
         // 'users' => [
