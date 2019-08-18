@@ -369,6 +369,13 @@ class ComposerStaticInitd71ba118bd258437bfad959dfcbc4f39
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Spatie\\Activitylog\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/spatie/activitylog/src',
+            ),
+        ),
         'P' => 
         array (
             'PhpOption\\' => 
@@ -393,6 +400,7 @@ class ComposerStaticInitd71ba118bd258437bfad959dfcbc4f39
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RoleController.php',
         'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -3281,6 +3289,16 @@ class ComposerStaticInitd71ba118bd258437bfad959dfcbc4f39
         'SebastianBergmann\\Timer\\RuntimeException' => __DIR__ . '/..' . '/phpunit/php-timer/src/RuntimeException.php',
         'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\Activitylog\\ActivitylogFacade' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/ActivitylogFacade.php',
+        'Spatie\\Activitylog\\ActivitylogServiceProvider' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/ActivitylogServiceProvider.php',
+        'Spatie\\Activitylog\\ActivitylogSupervisor' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/ActivitylogSupervisor.php',
+        'Spatie\\Activitylog\\Handlers\\ActivitylogHandlerInterface' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/Handlers/ActivitylogHandlerInterface.php',
+        'Spatie\\Activitylog\\Handlers\\BeforeHandlerInterface' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/Handlers/BeforeHandlerInterface.php',
+        'Spatie\\Activitylog\\Handlers\\DefaultLaravelHandler' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/Handlers/DefaultLaravelHandler.php',
+        'Spatie\\Activitylog\\Handlers\\EloquentHandler' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/Handlers/EloquentHandler.php',
+        'Spatie\\Activitylog\\LogsActivity' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/LogsActivity.php',
+        'Spatie\\Activitylog\\LogsActivityInterface' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/LogsActivityInterface.php',
+        'Spatie\\Activitylog\\Models\\Activity' => __DIR__ . '/..' . '/spatie/activitylog/src/Spatie/Activitylog/Models/Activity.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',

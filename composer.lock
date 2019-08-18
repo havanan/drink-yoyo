@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d22752ebcbd1509ee845464a39991b8a",
+    "content-hash": "5082dc6f6fb1057844345d0a7182fbe9",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1527,6 +1527,58 @@
                 "roles"
             ],
             "time": "2018-03-05T13:21:52+00:00"
+        },
+        {
+            "name": "spatie/activitylog",
+            "version": "2.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/activitylog.git",
+                "reference": "1f61b92b5d930d99229f02004a67bc1697c52770"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/activitylog/zipball/1f61b92b5d930d99229f02004a67bc1697c52770",
+                "reference": "1f61b92b5d930d99229f02004a67bc1697c52770",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Spatie\\Activitylog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be"
+                }
+            ],
+            "description": "A very simple activity logger to monitor the users of your website or application",
+            "homepage": "https://github.com/spatie/activitylog",
+            "keywords": [
+                "activity",
+                "laravel",
+                "log",
+                "user"
+            ],
+            "abandoned": "spatie/laravel-activitylog",
+            "time": "2016-06-29T07:44:25+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
