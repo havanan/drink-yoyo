@@ -57,7 +57,7 @@ class AdminLoginController extends Controller
 
             return redirect()->route('admin.index')->with('status','Đăng nhập thành công');
         } else {
-            return back()->withInput($request->only('email', 'remember'));
+            return back()->with('error','Tên đăng nhập hoặc mật khẩu sai');
         }
 
     }

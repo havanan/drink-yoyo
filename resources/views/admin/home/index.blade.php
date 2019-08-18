@@ -2,7 +2,13 @@
 @section('breadcrumb')
     Dashboard
 @endsection
-
+@section('js')
+    <!-- chart js -->
+    <script src="{{asset('admin')}}/assets/chart-js/Chart.bundle.js" ></script>
+    <script src="{{asset('admin')}}/assets/chart-js/utils.js" ></script>
+    <script src="{{asset('admin')}}/assets/chart-js/home-data.js" ></script>
+    <!-- end js include path -->
+@endsection
 @section('content')
     <!-- start widget -->
     <div class="state-overview">

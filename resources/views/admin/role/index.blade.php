@@ -24,14 +24,16 @@
                     </div>
                 </div>
                 <div class="card-body ">
-                    <table id="dataTable" class="display" style="width: 100%">
-{{--                        <thead>--}}
-{{--                            <tr>--}}
-{{--                                <th>Tên</th>--}}
-{{--                                <th>Tên hiển thị</th>--}}
-{{--                                <th>Mô tả</th>--}}
-{{--                            </tr>--}}
-{{--                        </thead>--}}
+                    <table id="dataTable" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Tên hiển thị</th>
+                                <th>Mô tả</th>
+                                <th>Tạo lúc</th>
+                                <th>Người sửa cuối</th>
+                            </tr>
+                        </thead>
                     </table>
                 </div>
             </div>

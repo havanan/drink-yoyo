@@ -30,7 +30,7 @@
     <link href="{{asset('admin')}}/css/responsive.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/css/theme-color.css" rel="stylesheet" type="text/css" />
     <!-- favicon -->
-    <link rel="shortcut icon" href="{{asset('admin')}}/img/favicon.ico" />
+    <link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}" />
     @yield('css')
 </head>
 <!-- END HEAD -->
@@ -308,27 +308,18 @@
     <!-- end footer -->
 </div>
 <!-- start js include path -->
-<script src="{{asset('admin')}}/assets/jquery.min.js" ></script>
-<script src="{{asset('admin')}}/assets/popper/popper.js" ></script>
-<script src="{{asset('admin')}}/assets/jquery.blockui.min.js" ></script>
-<script src="{{asset('admin')}}/assets/jquery.slimscroll.js"></script>
+<script src="{{asset('admin/assets/jquery.min.js')}}" ></script>
+<script src="{{asset('admin/assets/popper/popper.js')}}" ></script>
+<script src="{{asset('admin/assets/jquery.blockui.min.js')}}" ></script>
+<script src="{{asset('admin/assets/jquery.slimscroll.js')}}"></script>
 <!-- bootstrap -->
-<script src="{{asset('admin')}}/assets/bootstrap/js/bootstrap.min.js" ></script>
-<script src="{{asset('admin')}}/assets/bootstrap-switch/js/bootstrap-switch.min.js" ></script>
-<!-- counterup -->
-<script src="{{asset('admin')}}/assets/counterup/jquery.waypoints.min.js" ></script>
-<script src="{{asset('admin')}}/assets/counterup/jquery.counterup.min.js" ></script>
+<script src="{{asset('admin/assets/bootstrap/js/bootstrap.min.js')}}" ></script>
 <!-- Common js-->
-<script src="{{asset('admin')}}/assets/app.js" ></script>
-<script src="{{asset('admin')}}/assets/layout.js" ></script>
-<script src="{{asset('admin')}}/assets/theme-color.js" ></script>
+<script src="{{asset('admin/assets/app.js')}}" ></script>
+<script src="{{asset('admin/assets/layout.js')}}" ></script>
+<script src="{{asset('admin/assets/theme-color.js')}}" ></script>
 <!-- material -->
-<script src="{{asset('admin')}}/assets/material/material.min.js"></script>
-<!-- chart js -->
-<script src="{{asset('admin')}}/assets/chart-js/Chart.bundle.js" ></script>
-<script src="{{asset('admin')}}/assets/chart-js/utils.js" ></script>
-<script src="{{asset('admin')}}/assets/chart-js/home-data.js" ></script>
-<!-- end js include path -->
+<script src="{{asset('admin/assets/material/material.min.js')}}"></script>
 @yield('js')
 </body>
 </html>
