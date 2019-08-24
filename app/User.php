@@ -6,12 +6,32 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use Spatie\Activitylog\LogsActivity;
+use Spatie\Activitylog\LogsActivityInterface;
 
-class User extends Authenticatable
+class User extends Authenticatable implements LogsActivityInterface
 {
-    use LaratrustUserTrait;
-    use Notifiable;
+    use LaratrustUserTrait,Notifiable,LogsActivity;
+    protected static $logAttributes = ['*'];
+    protected static $logOnlyDirty = true;
+    public function getActivityDescriptionForEvent($eventName)
+    {
+        if ($eventName == 'created')
+        {
+            return 'User "' . $this->name . '" was created';
+        }
 
+        if ($eventName == 'updated')
+        {
+            return 'User "' . $this->name . '" was updated';
+        }
+
+        if ($eventName == 'deleted')
+        {
+            return 'User "' . $this->name . '" was deleted';
+        }
+        return '';
+    }
     /**
      * The attributes that are mass assignable.
      *
