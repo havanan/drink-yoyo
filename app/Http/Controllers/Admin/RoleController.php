@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Common;
 use App\Model\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,10 +13,13 @@ class RoleController extends Controller
     public function index(){
         return view('admin.role.index');
     }
-    public function getRoleList(){
+    public function getRoleList(Request $request){
+        $params = $request->all();
         $data = Role::paginate(10);
+        $data = Common::toTable($data);
         return $data;
     }
+
     public function create(Request $request){
         $params = $request->only('name','display_name','description');
         $params['author'] = Auth::user()->id;

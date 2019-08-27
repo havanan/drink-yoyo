@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Model\Activity;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -61,5 +63,12 @@ class AdminLoginController extends Controller
             return back()->with('error','Tên đăng nhập hoặc mật khẩu sai');
         }
 
+    }
+    public function createLog(){
+        $param = [
+            'user_id' => Auth::user()->id,
+            'text' => Auth::user()->name.' Login at '.Carbon::now()->format('d/m/Y H:i:s'),
+        ];
+        return Activity::create($param);
     }
 }

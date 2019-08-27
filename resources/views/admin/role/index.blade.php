@@ -32,6 +32,7 @@
                                 <th>Mô tả</th>
                                 <th>Tạo lúc</th>
                                 <th>Người sửa cuối</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -79,6 +80,20 @@
     <script src="{{asset('admin/js/datatable-init.js')}}" ></script>
     <script>
         var url ='{{route('admin.role.getRoleList')}}';
+        var button = [];
+        button.delete = true;
+        button.edit = true;
+        button.view = true;
+        var columns = [
+                { data: 'name' },
+                { data: 'display_name'},
+                { data: 'description'},
+                { data: 'created_at'},
+                { data: 'author_name'},
+                { data: 'id',render:function (data, type, row, meta) {
+                        return genButton(row,button)
+                    }},
+            ];
         getDataTable(url);
     </script>
 @endsection
