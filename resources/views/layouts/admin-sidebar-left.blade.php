@@ -20,7 +20,12 @@
                 </li>
                 <li class="nav-item  ">
                     <a href="{{route('admin.index')}}" class="nav-link nav-toggle"> <i class="material-icons">dashboard</i>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Bảng Điều Khiển</span>
+                    </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="{{route('admin.card.billCreate')}}" class="nav-link nav-toggle"> <i class="material-icons">add_shopping_cart</i>
+                        <span class="title">Bán Hàng</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -28,7 +33,7 @@
                         <i class="material-icons">email</i>
                         <span class="title">Email</span>
                         <span class="arrow"></span>
-                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>
+{{--                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>--}}
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
@@ -48,147 +53,25 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link nav-toggle"><i class="material-icons">assignment</i>
-                        <span class="title">Appointment</span><span class="arrow"></span></a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="schedule.html" class="nav-link "> <span class="title">Doctor Schedule</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="book_appointment.html" class="nav-link "> <span class="title">Book Appointment</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="book_appointment_material.html" class="nav-link "> <span class="title">Book Appointment Material</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="edit_appointment.html" class="nav-link "> <span class="title">Edit Appointment</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="view_appointment.html" class="nav-link "> <span class="title">View All Appointment</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
-                        <span class="title">Doctors</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="all_doctors.html" class="nav-link "> <span class="title">All Doctor</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_doctor.html" class="nav-link "> <span class="title">Add Doctor</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_doctor_material.html" class="nav-link "> <span class="title">Add Doctor Material</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="edit_doctor.html" class="nav-link "> <span class="title">Edit Doctor</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="doctor_profile.html" class="nav-link "> <span class="title">About Doctor</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link nav-toggle"> <i class="material-icons">group</i>
-                        <span class="title">Other Staff</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="all_staffs.html" class="nav-link "> <span class="title">All Staff</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_staff.html" class="nav-link "> <span class="title">Add Staff</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_staff_material.html" class="nav-link "> <span class="title">Add Staff Material</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="edit_staff.html" class="nav-link "> <span class="title">Edit Staff</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="staff_profile.html" class="nav-link "> <span class="title">Staff Profile</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link nav-toggle"> <i class="material-icons">hotel</i>
-                        <span class="title">Room Allotment</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="room_allotment.html" class="nav-link "> <span class="title">Alloted Rooms</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_room_allotment.html" class="nav-link "> <span class="title">New Allotment</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_room_allotment_material.html" class="nav-link "> <span class="title">New Allotment Material</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="edit_room_allotment.html" class="nav-link "> <span class="title">Edit Allotment</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link nav-toggle"> <i class="material-icons">monetization_on</i>
-                        <span class="title">Payments</span> <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="payments.html" class="nav-link "> <span class="title">Payments</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="add_payment.html" class="nav-link "> <span class="title">Add Payments</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="invoice_payment.html" class="nav-link "> <span class="title">Patient Invoice</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item  ">
-                    <a href="#" class="nav-link nav-toggle">
-                        <i class="material-icons">dvr</i>
-                        <span class="title">Role</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="{{route('admin.role.list')}}" class="nav-link ">
-                                <span class="title">Role</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="{{route('admin.role.permission')}}" class="nav-link ">
-                                <span class="title">Permission</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+{{--                <li class="nav-item  ">--}}
+{{--                    <a href="#" class="nav-link nav-toggle">--}}
+{{--                        <i class="material-icons">dvr</i>--}}
+{{--                        <span class="title">Role</span>--}}
+{{--                        <span class="arrow"></span>--}}
+{{--                    </a>--}}
+{{--                    <ul class="sub-menu">--}}
+{{--                        <li class="nav-item  ">--}}
+{{--                            <a href="{{route('admin.role.list')}}" class="nav-link ">--}}
+{{--                                <span class="title">Role</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item  ">--}}
+{{--                            <a href="{{route('admin.role.permission')}}" class="nav-link ">--}}
+{{--                                <span class="title">Permission</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
             </ul>
         </div>
     </div>

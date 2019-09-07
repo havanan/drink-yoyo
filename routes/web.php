@@ -29,6 +29,16 @@ Route::prefix('admin')->group(function() {
             Route::get('pro-file', 'UserController@profile')->name('admin.user.profile');
 
         });
+        Route::prefix('ban-hang')->group(function(){
+            Route::get('tao-hoa-don', 'CartController@billCreate')->name('admin.card.billCreate');
+            Route::get('menu-refresh', 'CartController@menuRefresh')->name('admin.card.menuRefresh');
+
+            Route::get('danh-sach-ban', 'CartController@tableList')->name('admin.card.tableList');
+
+        });
+        Route::prefix('ban')->group(function(){
+            Route::get('sl={sl}', 'TableController@import')->name('admin.table.import');
+        });
         Route::prefix('role')->group(function(){
             Route::get('list', 'RoleController@index')->name('admin.role.list');
             Route::get('get-role-list', 'RoleController@getRoleList')->name('admin.role.getRoleList');

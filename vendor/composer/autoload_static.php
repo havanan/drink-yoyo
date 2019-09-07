@@ -397,10 +397,11 @@ class ComposerStaticInitd71ba118bd258437bfad959dfcbc4f39
     );
 
     public static $classMap = array (
-        'App\\Activity' => __DIR__ . '/../..' . '/app/Activity.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Helpers\\Common' => __DIR__ . '/../..' . '/app/Helpers/Common.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CartController.php',
         'App\\Http\\Controllers\\Admin\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RoleController.php',
         'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -419,6 +420,7 @@ class ComposerStaticInitd71ba118bd258437bfad959dfcbc4f39
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Model\\Activity' => __DIR__ . '/../..' . '/app/Model/Activity.php',
         'App\\Model\\Admin' => __DIR__ . '/../..' . '/app/Model/Admin.php',
         'App\\Model\\Category' => __DIR__ . '/../..' . '/app/Model/Category.php',
         'App\\Model\\Permission' => __DIR__ . '/../..' . '/app/Model/Permission.php',
@@ -428,6 +430,7 @@ class ComposerStaticInitd71ba118bd258437bfad959dfcbc4f39
         'App\\Model\\ProductType' => __DIR__ . '/../..' . '/app/Model/ProductType.php',
         'App\\Model\\Province' => __DIR__ . '/../..' . '/app/Model/Province.php',
         'App\\Model\\Role' => __DIR__ . '/../..' . '/app/Model/Role.php',
+        'App\\Model\\Table' => __DIR__ . '/../..' . '/app/Model/Table.php',
         'App\\Model\\Team' => __DIR__ . '/../..' . '/app/Model/Team.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

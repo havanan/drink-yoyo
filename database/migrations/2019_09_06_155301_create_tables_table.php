@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateTablesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('name');
             $table->string('avatar');
             $table->integer('status');
+            $table->integer('is_active');
             $table->timestamps();
         });
     }

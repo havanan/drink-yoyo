@@ -6,10 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Activity' => $baseDir . '/app/Activity.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Helpers\\Common' => $baseDir . '/app/Helpers/Common.php',
     'App\\Http\\Controllers\\Admin\\AdminController' => $baseDir . '/app/Http/Controllers/Admin/AdminController.php',
+    'App\\Http\\Controllers\\Admin\\CartController' => $baseDir . '/app/Http/Controllers/Admin/CartController.php',
     'App\\Http\\Controllers\\Admin\\RoleController' => $baseDir . '/app/Http/Controllers/Admin/RoleController.php',
     'App\\Http\\Controllers\\Auth\\AdminLoginController' => $baseDir . '/app/Http/Controllers/Auth/AdminLoginController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -28,6 +29,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Model\\Activity' => $baseDir . '/app/Model/Activity.php',
     'App\\Model\\Admin' => $baseDir . '/app/Model/Admin.php',
     'App\\Model\\Category' => $baseDir . '/app/Model/Category.php',
     'App\\Model\\Permission' => $baseDir . '/app/Model/Permission.php',
@@ -37,6 +39,7 @@ return array(
     'App\\Model\\ProductType' => $baseDir . '/app/Model/ProductType.php',
     'App\\Model\\Province' => $baseDir . '/app/Model/Province.php',
     'App\\Model\\Role' => $baseDir . '/app/Model/Role.php',
+    'App\\Model\\Table' => $baseDir . '/app/Model/Table.php',
     'App\\Model\\Team' => $baseDir . '/app/Model/Team.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

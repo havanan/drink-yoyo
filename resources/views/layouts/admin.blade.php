@@ -298,8 +298,8 @@
     <!-- end page container -->
     <!-- start footer -->
     <div class="page-footer">
-        <div class="page-footer-inner"> 2017 &copy; RedStar Hospital Theme By
-            <a href="mailto:redstartheme@gmail.com" target="_top" class="makerCss">RT Theme maker</a>
+        <div class="page-footer-inner"> 2019 &copy; Trà chanh YoYo - 72 Núi Vàng - Phường Trung Sơn - 035 337 3135
+{{--            <a href="mailto:redstartheme@gmail.com" target="_top" class="makerCss">AHV</a>--}}
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>

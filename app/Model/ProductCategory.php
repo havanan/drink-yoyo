@@ -29,4 +29,8 @@ class ProductCategory extends Model implements LogsActivityInterface
         }
         return '';
     }
+    protected $hidden=['getAllType'];
+    public function getAllType(){
+        return $this->hasMany(ProductType::class,'category_id','id');
+    }
 }
