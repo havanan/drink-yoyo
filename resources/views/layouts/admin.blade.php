@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta name="description" content="Tìm Nhà Nhanh" />
+    <meta name="description" content="Trà chanh yoyo" />
     <meta name="author" content="Anhv" />
     <title>Admin @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -11,12 +11,14 @@
 |
 */
 
-Route::namespace('Frontend')->group(function () {
+
+
+Auth::routes();
+
+Route::namespace('Frontend')->middleware('auth:web')->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
 
 });
-
-Auth::routes();
 
 Route::prefix('admin')->group(function() {
 

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
+use App\Model\ProductCategory;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeController extends Controller
 {
     public function index(){
-//        dd(Hash::make('abcd1234'));
-        return view('frontend.home.index');
+        $product_categories = ProductCategory::where('status',1)->get();
+        return view('frontend.home.index',compact('product_categories'));
     }
 }
