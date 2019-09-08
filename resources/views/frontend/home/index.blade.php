@@ -1,10 +1,17 @@
 @extends('layouts.yoyo')
 @section('js')
+    <script src="{{asset('yoyo/javascript/bootbox.all.min.js')}}"></script>
     <script>
-       function addToCart(id) {
-
-       }
+        var addUrl = '{{route('addToCart')}}';
+        var payUrl = '{{route('payment')}}';
+        var createUrl = '{{route('destroyCart')}}';
+        var disCountUrl = '{{route('disCount')}}';
+        var removeUrl = '{{route('remove')}}';
+        var updateUrl = '{{route('update')}}';
     </script>
+    <script src="{{asset('js/payment.js')}}"></script>
+
+
 @endsection
 @section('content')
     <section class="flat-imagebox style2 background">
@@ -75,50 +82,21 @@
                 <div class="col-md-4">
                     <div class="cart-totals">
                         <h3>Hóa Đơn</h3>
-                        <form action="#" method="get" accept-charset="utf-8">
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label >Tên khách hàng <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" name="customer_name" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label >Số bàn <span class="text-danger">*</span></label>
-                                    <input type="number" class="form-control" name="table_number" required min="1">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label >Giảm giá (%) </label>
-                                    <input type="number" class="form-control" name="discount" min="0" value="0">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label >Ghi chú </label>
-                                    <input type="text" class="form-control" name="note">
-                                </div>
-                            </div>
+                        <form id="frmOrder">
+                            @include('frontend.home.order_form')
                             <div class="row" id="selected-product">
                                 @include('frontend.home.product_selected_list')
                             </div>
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td>Khuyến Mại</td>
-                                    <td class="subtotal">0 VNĐ</td>
-                                </tr>
-                                <tr>
-                                    <td>Tổng Tiền</td>
-                                    <td class="price-total">0 VNĐ</td>
-                                </tr>
-                                </tbody>
-                            </table>
                             <div class="btn-cart-totals">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <a href="#" class="create" title="">Tạo Mới</a>
+                                        <a href="javascript:void(0)" class="table-item create" onclick="creatNewOrder()">Tạo Mới</a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="#" class="checkout" title="">Thanh Toán</a>
+                                        <a href="javascript:void(0)" class="table-item checkout" onclick="pay()">Thanh Toán</a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="#" class="update" onclick="javascript:window.print();"><i class="fa fa-print"></i> In HĐ</a>
+                                        <a href="javascript:void(0)" class="table-item update" onclick="javascript:window.print();"><i class="fa fa-print"></i> In HĐ</a>
                                     </div>
 
                                 </div>

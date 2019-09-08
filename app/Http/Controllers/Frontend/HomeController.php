@@ -10,6 +10,7 @@ class HomeController extends Controller
 {
     public function index(){
         $product_categories = ProductCategory::where('status',1)->get();
-        return view('frontend.home.index',compact('product_categories'));
+        $cartInfo = $this->getCartInfo();
+        return view('frontend.home.index',compact('product_categories','cartInfo'));
     }
 }

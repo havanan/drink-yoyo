@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
 
 
     ],
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Activity' => Spatie\Activitylog\ActivitylogFacade::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
 
     ],
 

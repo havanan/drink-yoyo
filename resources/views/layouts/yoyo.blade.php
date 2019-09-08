@@ -63,7 +63,7 @@
                     <div class="col-md-3">
                         <div id="logo" class="logo">
                             <a href="{{route('home')}}" title="">
-                                <img src="{{asset('yoyo')}}/images/logos/logo.png" alt="">
+                                <img src="{{asset('img/yoyo.jpg')}}" alt="" style="width: 50%;">
                             </a>
                         </div><!-- /#logo -->
                     </div><!-- /.col-md-3 -->

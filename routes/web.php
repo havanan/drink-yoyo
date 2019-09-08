@@ -18,6 +18,16 @@ Auth::routes();
 Route::namespace('Frontend')->middleware('auth:web')->group(function (){
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::prefix('cart')->group(function(){
+        Route::post('addToCart', 'CartController@addToCart')->name('addToCart');
+        Route::post('payment', 'CartController@payment')->name('payment');
+        Route::post('destroyCart', 'CartController@destroyCart')->name('destroyCart');
+        Route::post('disCount', 'CartController@disCount')->name('disCount');
+        Route::post('remove', 'CartController@remove')->name('remove');
+        Route::post('update', 'CartController@updateCart')->name('update');
+
+    });
+
 });
 
 Route::prefix('admin')->group(function() {
@@ -34,7 +44,6 @@ Route::prefix('admin')->group(function() {
         Route::prefix('ban-hang')->group(function(){
             Route::get('tao-hoa-don', 'CartController@billCreate')->name('admin.card.billCreate');
             Route::get('menu-refresh', 'CartController@menuRefresh')->name('admin.card.menuRefresh');
-
             Route::get('danh-sach-ban', 'CartController@tableList')->name('admin.card.tableList');
 
         });
