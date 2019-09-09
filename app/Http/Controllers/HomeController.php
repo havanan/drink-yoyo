@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -11,10 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -24,5 +23,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function getCode(){
+        $data = Admin::all();
+        $code = Hash::make('abcd1234');
+        dd($data);
     }
 }

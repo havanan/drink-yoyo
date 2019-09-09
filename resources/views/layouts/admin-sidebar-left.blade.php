@@ -23,34 +23,34 @@
                         <span class="title">Bảng Điều Khiển</span>
                     </a>
                 </li>
-                <li class="nav-item  ">
-                    <a href="{{route('admin.card.billCreate')}}" class="nav-link nav-toggle"> <i class="material-icons">add_shopping_cart</i>
-                        <span class="title">Bán Hàng</span>
-                    </a>
-                </li>
+                {{--<li class="nav-item  ">--}}
+                    {{--<a href="{{route('admin.card.billCreate')}}" class="nav-link nav-toggle"> <i class="material-icons">add_shopping_cart</i>--}}
+                        {{--<span class="title">Bán Hàng</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
-                        <i class="material-icons">email</i>
-                        <span class="title">Email</span>
+                        <i class="material-icons">redeem</i>
+                        <span class="title">Sản Phẩm</span>
                         <span class="arrow"></span>
 {{--                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>--}}
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="email_inbox.html" class="nav-link ">
-                                <span class="title">Inbox</span>
+                            <a href="{{route('admin.product.create')}}" class="nav-link ">
+                                <span class="title">Tạo Mới</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="email_view.html" class="nav-link ">
-                                <span class="title">View Mail</span>
+                        <li class="nav-item ">
+                            <a href="{{route('admin.product.index')}}" class="nav-link ">
+                                <span class="title">Danh Sách</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="email_compose.html" class="nav-link ">
-                                <span class="title">Compose Mail</span>
-                            </a>
-                        </li>
+                        {{--<li class="nav-item  ">--}}
+                            {{--<a href="email_compose.html" class="nav-link ">--}}
+                                {{--<span class="title">Compose Mail</span>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </li>
 {{--                <li class="nav-item  ">--}}
