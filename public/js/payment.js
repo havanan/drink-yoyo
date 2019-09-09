@@ -29,6 +29,9 @@ function getAllForm() {
     }
     return formData;
 }
+function clearForm() {
+    $("#frmOrder").trigger("reset");
+}
 function pay() {
     var data = getAllForm();
 
@@ -40,7 +43,6 @@ function pay() {
     }
     $.ajax({
         type:'POST',
-        dataType: "json",
         url:payUrl,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -51,6 +53,7 @@ function pay() {
         },
         success:function(data) {
             console.log(data);
+            $('#bodyBill').html(data);
         }
     });
 }
@@ -66,7 +69,7 @@ function creatNewOrder() {
         },
         success:function(data) {
             genItemsList(data);
-            setDiscount(0);
+            clearForm();
         }
     });
 }
@@ -134,5 +137,23 @@ function genItemsList(data) {
     $('#selected-product').html(data)
 }
 function setDiscount(num) {
-    $('#discount').val((num));
+    $
+    ('#discount').val((num));
+}
+function printBill() {
+    var id = 'billPrint';
+    var data=document.getElementById(id).innerHTML;
+    var myWindow = window.open('', 'Trà Chanh YoYo', 'height=auto,width=100%');
+    myWindow.document.write('<html><head><title>Trà Chanh YoYo</title>');
+    myWindow.document.write('</head><body >');
+    myWindow.document.write(data);
+    myWindow.document.write('</body></html>');
+    myWindow.document.close(); // necessary for IE >= 10
+
+    myWindow.onload=function(){ // necessary if the div contain images
+
+        myWindow.focus(); // necessary for IE >= 10
+        myWindow.print();
+        myWindow.close();
+    };
 }

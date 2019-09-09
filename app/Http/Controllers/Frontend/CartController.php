@@ -62,9 +62,10 @@ class CartController extends Controller
         DB::beginTransaction();
 
         try {
-            Bill::create($formData);
+            $billInfo = Bill::create($formData);
+            $cartInfo =json_decode($billInfo['content'],true);
             DB::commit();
-            return 'true';
+            return view('frontend.home.bill_info',compact('cartInfo','billInfo'));
         } catch (\Exception $e) {
             DB::rollback();
             return 'false';
@@ -87,4 +88,9 @@ class CartController extends Controller
         return view('frontend.home.product_selected_list',compact('cartInfo'));
 
     }
+    public function billView($id){
+        $billInfo = Bill::findOrFail($id);
+        $cartInfo =json_decode($billInfo['content'],true);
+        return view('frontend.home.bill_info',compact('cartInfo','billInfo'));
+        }
 }

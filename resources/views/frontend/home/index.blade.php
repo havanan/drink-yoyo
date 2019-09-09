@@ -96,9 +96,8 @@
                                         <a href="javascript:void(0)" class="table-item checkout" onclick="pay()">Thanh Toán</a>
                                     </div>
                                     <div class="col-md-4">
-                                        <a href="javascript:void(0)" class="table-item update" onclick="javascript:window.print();"><i class="fa fa-print"></i> In HĐ</a>
+                                        <a href="javascript:void(0)" class="table-item update" data-toggle="modal" data-target=".bill-body" ><i class="fa fa-print"></i> In HĐ</a>
                                     </div>
-
                                 </div>
                             </div><!-- /.btn-cart-totals -->
                         </form><!-- /form -->
@@ -107,4 +106,15 @@
             </div><!-- /.row -->
         </div><!-- /.container -->
     </section><!-- /.flat-imagebox style2 -->
+
+    <div class="modal fade bill-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div id="bodyBill"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="printBill()">In</button>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -25,6 +25,7 @@ Route::namespace('Frontend')->middleware('auth:web')->group(function (){
         Route::post('disCount', 'CartController@disCount')->name('disCount');
         Route::post('remove', 'CartController@remove')->name('remove');
         Route::post('update', 'CartController@updateCart')->name('update');
+        Route::get('chi-tiet-hoa-don/ma={id}', 'CartController@billView')->name('billView');
 
     });
 
