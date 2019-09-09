@@ -176,8 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
-        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
+         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+         Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -232,6 +234,7 @@ return [
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Activity' => Spatie\Activitylog\ActivitylogFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

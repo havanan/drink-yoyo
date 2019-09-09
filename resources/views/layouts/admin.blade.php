@@ -264,7 +264,7 @@
     </div>
     <!-- end header -->
     <!-- start color quick setting -->
-    @include('layouts.admin-quick-setting')
+    {{--@include('layouts.admin-quick-setting')--}}
     <!-- end color quick setting -->
     <!-- start page container -->
     <div class="page-container">

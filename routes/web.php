@@ -12,6 +12,7 @@
 */
 
 
+Route::get('get-code', 'HomeController@getCode')->name('getCode');
 
 Auth::routes();
 
@@ -31,6 +32,7 @@ Route::namespace('Frontend')->middleware('auth:web')->group(function (){
 });
 
 Route::prefix('admin')->group(function() {
+    Route::get('/', 'AdminController@index')->name('admin.home');
 
     Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -56,6 +58,13 @@ Route::prefix('admin')->group(function() {
             Route::post('list', 'RoleController@create')->name('admin.role.create');
 
             Route::get('permission', 'RoleController@permission')->name('admin.role.permission');
+        });
+        Route::prefix('san-pham')->group(function(){
+            Route::get('/', 'ProductController@index')->name('admin.product.index');
+            Route::get('tao-moi', 'ProductController@create')->name('admin.product.create');
+            Route::post('tao-moi', 'ProductController@insert')->name('admin.product.insert');
+            Route::get('findProductTypes/{categories_id}', 'ProductController@findProductTypes')->name('admin.product.findProductTypes');
+
         });
     });
 });
