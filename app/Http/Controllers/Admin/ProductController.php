@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Common;
+use App\Http\Requests\RequestProductCreate;
+use App\Http\Requests\RequestProductUpdate;
 use App\Model\Product;
 use App\Model\ProductCategory;
 use App\Model\ProductType;
@@ -37,26 +39,25 @@ class ProductController extends Controller
         $types = ProductType::where('status',1)->where('category_id',$categories_id)->selectRaw('name as text,id')->get();
         return $types;
     }
-    public function genProductTypesData($categories_data){
+    public function genProductTypesData($categories_data,$selected = false){
         $gr = [];
         $i = 0;
         foreach ($categories_data as  $item){
 
             if ($item->getAllType != null && count($item->getAllType ) > 0){
 
-                $grType = $this->getType($item->getAllType);
+                $grType = $this->getType($item->getAllType,$selected);
 
                 $gr[$i] = [
                     'text' => $item->name,
                     'children' => $grType
                 ];
-
                 $i++;
             }
         }
         return $gr;
     }
-    public function getType($allType){
+    public function getType($allType,$selected = false){
         $grType = [];
         $i = 0;
         foreach ($allType as $key => $item){
@@ -68,12 +69,15 @@ class ProductController extends Controller
                 'text' => $item->name,
 
             ];
+            if ($selected && $selected == $item->id){
+                $grType[$i]['selected'] = true;
+            }
 
             $i++;
         }
         return $grType;
     }
-    public function insert(Request $request){
+    public function insert(RequestProductCreate $request){
        $params = $request->all();
        $params['slug'] = Str::slug($params['name']);
        unset($params['_token']);
@@ -100,6 +104,28 @@ class ProductController extends Controller
     public function getList(){
         $data = $this->getProductList();
         return view('admin.product.table_body',compact('data'));
+    }
+    public function edit($id){
+        $data = Product::findOrFail($id);
+        $categories_data = ProductCategory::where('status',1)->get();
+        $selected = $data['type_id'];
+        $categories = $this->genProductTypesData($categories_data,$selected);
+        return view('admin.product.edit',compact('data','categories'));
+    }
+    public function update(RequestProductUpdate $request){
+        $params = $request->all();
+        $id = $params['id'];
+        $info = Product::findOrFail($id);
+        $params['slug'] = Str::slug($params['name']);
+        unset($params['_token']);
+        unset($params['id']);
+        $update = Product::where('id',$id)->update($params);
+        if ($update){
+            return redirect()->route('admin.product.index')->with('success','Sửa sản phẩm thành công !');
+        }
+        else{
+            return  back()->with('errors','Sửa sản phẩm thất bại');
+        }
     }
 
 }

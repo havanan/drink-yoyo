@@ -76,6 +76,8 @@ Route::prefix('admin')->group(function() {
             Route::get('findProductTypes/{categories_id}', 'ProductController@findProductTypes')->name('admin.product.findProductTypes');
             Route::get('getList', 'ProductController@getList')->name('admin.product.getList');
 
+            Route::get('sua/{id}', 'ProductController@edit')->name('admin.product.edit');
+            Route::post('cap-nhat', 'ProductController@update')->name('admin.product.update');
             Route::post('xoa-sp', 'ProductController@delete')->name('admin.product.delete');
 
         });

@@ -19,7 +19,7 @@
             </td>
             <td>{{$item->created_at != null ? date('H:i d/m/Y',strtotime($item->created_at)) : '-'}}</td>
             <td>
-                <button class="btn btn-primary"><i class="fa fa-pencil"></i></button>
+                <a href="{{route('admin.product.edit',$item->id)}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                 <button class="btn btn-danger" onclick="btnDelete({{$item->id}})"><i class="fa fa-trash-o"></i></button>
             </td>
         </tr>
