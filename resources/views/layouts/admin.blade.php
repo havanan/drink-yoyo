@@ -322,7 +322,13 @@
 <!-- material -->
 <script src="{{asset('admin/assets/material/material.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/assets/sweet-alert/sweetalert.min.js')}}"></script>
-
+<script type="text/javascript">
+    var url = '{{url()->current()}}'
+    var loc = '#remove-scroll ul li a[href="' + url + '"]';
+    $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
+    $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
+    $('#remove-scroll ul li a[href="' + url + '"]').parent('li').addClass('active');
+</script>
 @yield('js')
 </body>
 </html>
