@@ -12,22 +12,16 @@
 @section('js')
     <script src="{{asset('js/select2.min.js')}}"></script>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+    <script src="{{asset('vendor/laravel-filemanager/js/lfm.js')}}"></script>
+    <script src="{{asset('admin/js/product.js')}}"></script>
 
     <script>
         var categories = '<?php echo json_encode($categories) ?>';
             categories = JSON.parse(categories);
-
-        genSelect2('select2',categories);
-
-        function genSelect2(class_name,data){
-            $('.'+class_name).select2({
-                data:data
-            });
-        }
         var domain = "{{ url(config('lfm.url_prefix')) }}";
 
-        $('#lfm').filemanager('image', {prefix: domain});
-
+        genSelect2('select2',categories);
+        standAloneButton(domain);
     </script>
 @endsection
 @section('content')
@@ -86,7 +80,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="unit" placeholder="Đơn vị">
+                                        <input type="text" class="form-control" name="unit" placeholder="Đơn vị" value="cốc">
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +94,7 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá bán" name="price" required>
+                                        <input type="number" min="0" class="form-control" placeholder="Giá bán" name="price" required value="10000">
                                     </div>
                                 </div>
                             </div>

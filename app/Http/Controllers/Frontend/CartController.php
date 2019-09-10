@@ -66,9 +66,10 @@ class CartController extends Controller
 
         try {
             $billInfo = Bill::create($formData);
-            $cartInfo =json_decode($billInfo['content'],true);
             DB::commit();
-            return view('frontend.home.bill_info',compact('cartInfo','billInfo'));
+            session(['last_bill_id' => $billInfo['id']]);
+
+            return 'true';
         } catch (\Exception $e) {
             DB::rollback();
             return 'false';
@@ -76,6 +77,7 @@ class CartController extends Controller
     }
     public function destroyCart(){
         Cart::destroy();
+        session(['last_bill_id' => null]);
         $cartInfo = $this->getCartInfo();
         return view('frontend.home.product_selected_list',compact('cartInfo'));
 

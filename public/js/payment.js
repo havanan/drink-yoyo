@@ -16,7 +16,6 @@ function addToCart(id) {
             if (data!= null){
                 genItemsList(data);
             }
-
         }
     });
 }
@@ -36,11 +35,8 @@ function pay() {
     var data = getAllForm();
 
     if (data.customer_name == ''){
-
         swal("Cảnh Báo !", "Chưa nhập tên khách hàng!", "warning");
-
         return false;
-
     }
     $.ajax({
         type:'POST',
@@ -55,26 +51,15 @@ function pay() {
         success:function(data) {
 
             if (data === 'false'){
-
                 swal("Thanh Toán Lỗi !", "Vui lòng kiểm tra lại thông tin Order !", "error");
-
                 return false;
-
             }else {
                 swal("Thanh Toán Thành Công !", "Vui lòng in hóa đơn trả khách !", "success");
-
-                $('#bodyBill').html(data);
             }
-
-
         },
         error:function (e) {
-
             swal("Thanh Toán Lỗi !", "Vui lòng kiểm tra lại thông tin Order !", "error");
-
             return false;
-
-
         }
     });
 }
@@ -84,9 +69,6 @@ function creatNewOrder() {
         url:createUrl,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{
-
         },
         success:function(data) {
             genItemsList(data);
@@ -109,12 +91,8 @@ function getPriceDiscount() {
             genItemsList(data);
         },
         error:function (e) {
-
             swal("Tính triết khấu lỗi!", "Vui lòng kiểm tra lại thông tin Order !", "error");
-
             return false;
-
-
         }
     });
 }
@@ -134,7 +112,6 @@ function removeItem(rowId) {
             genItemsList(data);
         },
         error:function (e) {
-
             swal("Xóa sản phẩm không thành công !", "Vui lòng kiểm tra lại thông tin Order !", "error");
             return false;
 
@@ -162,9 +139,61 @@ function updateCartItem(rowId) {
             genItemsList(data);
         },
         error:function (e) {
-
             swal("Lỗi Cập nhật Bill !", "Vui lòng kiểm tra lại thông tin Order !", "error");
             return false;
+
+        }
+    });
+}
+function getBill(id) {
+    $.ajax({
+        type:'POST',
+        url:billInfoUrl,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            id:id,
+        },
+        success:function(data) {
+            if (data === 'false'){
+                swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+                return false;
+            }else {
+                $('#bodyBill').html(data);
+                $('.bill-body').modal('show');
+            }
+        },
+        error:function (e) {
+            swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+            return false;
+        }
+    });
+}
+function getBarcode(id) {
+    $.ajax({
+        type:'POST',
+        url:billBarcodeUrl,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            id:id,
+        },
+        success:function(data) {
+
+            if (data === 'false'){
+                swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+                return false;
+            }else {
+                $('#bodyBill').html(data);
+                $('.bill-body').modal('show');
+            }
+        },
+        error:function (e) {
+            swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+            return false;
+
 
         }
     });

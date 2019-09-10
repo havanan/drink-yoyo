@@ -7,10 +7,10 @@
         var disCountUrl = '{{route('disCount')}}';
         var removeUrl = '{{route('remove')}}';
         var updateUrl = '{{route('update')}}';
+        var billInfoUrl = '{{route('getBillInfo')}}';
+        var billBarcodeUrl = '{{route('getBillBarcode')}}';
     </script>
     <script src="{{asset('js/payment.js')}}"></script>
-
-
 @endsection
 @section('content')
     <section class="flat-imagebox style2 background">
@@ -44,7 +44,7 @@
                                                                             <div class="imagebox style2">
                                                                                 <div class="box-image">
                                                                                     <a href="#" title="{{$product->name}}">
-                                                                                        <img src="{{asset('img/'.$product->avatar)}}" alt="{{$product->name}}" class="img-item">
+                                                                                        <img src="{{asset('/').$product->avatar}}" alt="{{$product->name}}" class="img-item">
                                                                                     </a>
                                                                                 </div><!-- /.box-image -->
                                                                                 <div class="box-content">
@@ -88,14 +88,17 @@
                             </div>
                             <div class="btn-cart-totals">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <a href="javascript:void(0)" class="table-item create" onclick="creatNewOrder()">Tạo Mới</a>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <a href="javascript:void(0)" class="table-item checkout" onclick="pay()">Thanh Toán</a>
                                     </div>
-                                    <div class="col-md-4">
-                                        <a href="javascript:void(0)" class="table-item update" data-toggle="modal" data-target=".bill-body" ><i class="fa fa-print"></i> In HĐ</a>
+                                    <div class="col-md-3">
+                                        <a href="javascript:void(0)" class="table-item update" onclick="getBill()" ><i class="fa fa-print"></i> In HĐ</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="javascript:void(0)" class="table-item update" onclick="getBarcode()" ><i class="fa fa-barcode"></i> Tem</a>
                                     </div>
                                 </div>
                             </div><!-- /.btn-cart-totals -->
@@ -108,7 +111,7 @@
 
     <div class="modal fade bill-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content bill-preview" style="height: 950px !important;">
                 <div id="bodyBill"></div>
             </div>
             <div class="modal-footer">

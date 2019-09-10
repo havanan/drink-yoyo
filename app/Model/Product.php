@@ -31,5 +31,7 @@ class Product extends Model implements LogsActivityInterface
     }
 
     protected $fillable = ['name','slug','current_price','price','avatar','unit','note','type_id','amount','type','status'];
-
+    public function getType(){
+        return $this->hasOne(ProductType::class,'id','type_id');
+    }
 }

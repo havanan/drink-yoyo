@@ -1,12 +1,13 @@
-<link rel="stylesheet" type="text/css" href="{{asset('yoyo')}}/stylesheets/bootstrap.min.css"><script type="text/javascript" src="{{asset('yoyo')}}/javascript/jquery.min.js"></script>
 <script type="text/javascript" src="{{asset('yoyo')}}/javascript/tether.min.js"></script>
 <script type="text/javascript" src="{{asset('yoyo')}}/javascript/bootstrap.min.js"></script>
 <script src="{{asset('js/payment.js')}}"></script>
 <style>
+    address{
+        margin-bottom: 0;
+    }
     .invoice-title h2, .invoice-title h3 {
         display: inline-block;
     }
-
     .table > tbody > tr > .no-line {
         border-top: none;
     }
@@ -18,30 +19,35 @@
     .table > tbody > tr > .thick-line {
         border-top: 2px solid;
     }
+    .text-center{text-align: center}
+
 
 </style>
-<div class="container" id="billPrint">
+<div class="container" id="billPrint" style="  width: 500px; margin: 0 auto;">
     <div class="row">
         <div class="col-md-12">
             <div class="invoice-title ">
                 <h2>Trà Chanh YoYo</h2>
-                <p>72 Núi Vàng - Phường Trung Sơn</p>
-                <p>035 337 3135</p>
+                <br>
+                <span>72 Núi Vàng - Phường Trung Sơn</span>
+                <br>
+                <span>035 337 3135</span>
             </div>
-            <div class="text-center">
-                <h3>HÓA ĐƠN THANH TOÁN</h3>
+            <div style="text-align: center">
+                <h4>HÓA ĐƠN THANH TOÁN</h4>
             </div>
             <hr>
             <div class="row">
-                <div class="col-md-6">
-                    <address>
-                        <h3 class="pull-right">HĐ # {{$billInfo['id']}}</h3>
-                        <p><strong>Bàn số: {{$billInfo['table_number']}}</strong></p>
-                        <p><strong>Khách hàng: {{$billInfo['customer_name']}}</strong></p>
-                        <p>Nhân viên: {{$billInfo->getStaff->name}}</p>
-                        <p>{{date('H:i - d/m/Y',strtotime($billInfo['created_at']))}}</p>
-                    </address>
-                </div>
+                <address style="padding-left: 10px">
+                    <h4>HĐ # {{$billInfo['id']}}</h4>
+                    <span><strong>Bàn số: {{$billInfo['table_number']}}</strong></span>
+                    <br>
+                    <span><strong>Khách hàng: {{$billInfo['customer_name']}}</strong></span>
+                    <br>
+                    <span>Nhân viên: {{$billInfo->getStaff->name}}</span>
+                    <br>
+                    <span>{{date('H:i - d/m/Y',strtotime($billInfo['created_at']))}}</span>
+                </address>
             </div>
         </div>
     </div>
@@ -56,10 +62,10 @@
                                 <thead>
                                 <tr>
                                     <td><strong>STT</strong></td>
-                                    <td class="text-center"><strong>Tên</strong></td>
+                                    <td ><strong>Tên</strong></td>
                                     <td class="text-center"><strong>SL</strong></td>
-                                    <td class="text-center"><strong>Giá</strong></td>
-                                    <td class="text-center"><strong>Thành tiền</strong></td>
+                                    <td><strong>Giá</strong></td>
+                                    <td><strong>Thành tiền</strong></td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -76,8 +82,8 @@
                                             <td class="text-center">
                                                 {{$item[0]['qty']}}
                                             </td>
-                                            <td class="text-center">{{number_format($item[0]['price'])}}</td>
-                                            <td class="text-center"> {{number_format($item[0]['subtotal']) }}</td>
+                                            <td>{{number_format($item[0]['price'])}}</td>
+                                            <td> {{number_format($item[0]['subtotal']) }}</td>
                                         </tr>
                                     @endforeach
                                 @endif
@@ -85,7 +91,7 @@
                             </table>
                         </div>
 
-                        <div>
+                        <div style="margin-top: 5px">
                             <div style="float: left">
                                 <h4><strong>Khuyến mại: </strong></h4>
                                 <h4><strong>Tổng tiền: </strong></h4>

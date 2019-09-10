@@ -51,7 +51,10 @@
                                 <a href="#" title="">{{Auth::user()->name}}<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                                 <ul class="unstyled">
                                     <li>
-                                        <a href="shop-checkout.html" title="">Đăng Xuất</a>
+                                        <a href="{{ route('logout') }}" title="">Đăng Xuất</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
                                     </li>
                                 </ul><!-- /.unstyled -->
                             </li>
@@ -79,8 +82,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-9 col-10">
+                        <div class="today-deal mr-3">
+                            <a href="{{route('home')}}" title="">Bán Hàng</a>
+                        </div><!-- /.today-deal -->
                         <div class="today-deal">
-                            <a href="{{route('home')}}" title="">Trang Chủ</a>
+                            <a href="{{route('billList')}}" title="">Danh Sách Bill</a>
                         </div><!-- /.today-deal -->
                         <div class="btn-menu">
                             <span></span>
@@ -91,67 +97,6 @@
         </div><!-- /.header-bottom -->
     </section><!-- /#header -->
     @yield('content')
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="widget-ft widget-about">
-                        <div class="logo logo-ft">
-                            <a href="index.html" title="">
-                                <img src="{{asset('yoyo')}}/images/logos/logo-ft.png" alt="">
-                            </a>
-                        </div><!-- /.logo-ft -->
-                        <div class="widget-content">
-                            <div class="icon">
-                                <img src="{{asset('yoyo')}}/images/icons/call.png" alt="">
-                            </div>
-                            <div class="info">
-                                <p class="questions">Got Questions ? Call us 24/7!</p>
-                                <p class="phone">Call Us: (888) 1234 56789</p>
-                                <p class="address">
-                                    PO Box CT16122 Collins Street West, Victoria 8007,<br />Australia.
-                                </p>
-                            </div>
-                        </div><!-- /.widget-content -->
-                        <ul class="social-list">
-                            <li>
-                                <a href="#" title="">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    <i class="fa fa-pinterest" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" title="">
-                                    <i class="fa fa-google" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                        </ul><!-- /.social-list -->
-                    </div><!-- /.widget-about -->
-                </div><!-- /.col-lg-3 col-md-6 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </footer><!-- /footer -->
-
     <section class="footer-bottom">
         <div class="container">
             <div class="row">

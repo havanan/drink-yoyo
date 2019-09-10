@@ -11,7 +11,7 @@
  Target Server Version : 100406
  File Encoding         : 65001
 
- Date: 09/09/2019 02:15:04
+ Date: 10/09/2019 21:45:18
 */
 
 SET NAMES utf8mb4;
@@ -40,7 +40,7 @@ CREATE TABLE `activity_log`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of activity_log
@@ -72,6 +72,44 @@ INSERT INTO `activity_log` VALUES (24, 1, 'Bill \"\" was created', '::1', '2019-
 INSERT INTO `activity_log` VALUES (25, 1, 'Bill \"\" was created', '::1', '2019-09-08 19:14:10', '2019-09-08 19:14:10');
 INSERT INTO `activity_log` VALUES (26, 1, 'Bill \"\" was created', '::1', '2019-09-08 19:14:23', '2019-09-08 19:14:23');
 INSERT INTO `activity_log` VALUES (27, 1, 'Bill \"\" was created', '::1', '2019-09-08 19:14:33', '2019-09-08 19:14:33');
+INSERT INTO `activity_log` VALUES (28, 1, 'Bill \"\" was created', '::1', '2019-09-09 12:15:47', '2019-09-09 12:15:47');
+INSERT INTO `activity_log` VALUES (29, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:00:31', '2019-09-09 14:00:31');
+INSERT INTO `activity_log` VALUES (30, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:00:43', '2019-09-09 14:00:43');
+INSERT INTO `activity_log` VALUES (31, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:01:32', '2019-09-09 14:01:32');
+INSERT INTO `activity_log` VALUES (32, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:02:21', '2019-09-09 14:02:21');
+INSERT INTO `activity_log` VALUES (33, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:04:39', '2019-09-09 14:04:39');
+INSERT INTO `activity_log` VALUES (34, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:08:59', '2019-09-09 14:08:59');
+INSERT INTO `activity_log` VALUES (35, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:09:03', '2019-09-09 14:09:03');
+INSERT INTO `activity_log` VALUES (36, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:09:13', '2019-09-09 14:09:13');
+INSERT INTO `activity_log` VALUES (37, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:14:26', '2019-09-09 14:14:26');
+INSERT INTO `activity_log` VALUES (38, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:14:47', '2019-09-09 14:14:47');
+INSERT INTO `activity_log` VALUES (39, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:15:09', '2019-09-09 14:15:09');
+INSERT INTO `activity_log` VALUES (40, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:23:34', '2019-09-09 14:23:34');
+INSERT INTO `activity_log` VALUES (41, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:25:32', '2019-09-09 14:25:32');
+INSERT INTO `activity_log` VALUES (42, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:27:02', '2019-09-09 14:27:02');
+INSERT INTO `activity_log` VALUES (43, 1, 'Bill \"\" was created', '::1', '2019-09-09 14:27:57', '2019-09-09 14:27:57');
+INSERT INTO `activity_log` VALUES (44, 1, 'Product \"Trà chanh truyền thống\" was deleted', '::1', '2019-09-10 14:05:26', '2019-09-10 14:05:26');
+INSERT INTO `activity_log` VALUES (45, 1, 'Product \"Trà đào nhiệt đới\" was deleted', '::1', '2019-09-10 14:14:15', '2019-09-10 14:14:15');
+INSERT INTO `activity_log` VALUES (46, 1, 'Product \"Trà quất\" was deleted', '::1', '2019-09-10 14:14:24', '2019-09-10 14:14:24');
+INSERT INTO `activity_log` VALUES (47, 1, 'Product \"Nước cam\" was deleted', '::1', '2019-09-10 14:14:27', '2019-09-10 14:14:27');
+INSERT INTO `activity_log` VALUES (48, 1, 'Product \"Trà gừng\" was deleted', '::1', '2019-09-10 14:14:32', '2019-09-10 14:14:32');
+INSERT INTO `activity_log` VALUES (49, 1, 'Product \"Trân châu trắng\" was deleted', '::1', '2019-09-10 14:14:42', '2019-09-10 14:14:42');
+INSERT INTO `activity_log` VALUES (50, 1, 'Product \"Trà chanh truyền thống\" was created', '::1', '2019-09-10 14:21:13', '2019-09-10 14:21:13');
+INSERT INTO `activity_log` VALUES (51, 1, 'Product \"Nha đam\" was deleted', '::1', '2019-09-10 14:21:21', '2019-09-10 14:21:21');
+INSERT INTO `activity_log` VALUES (52, 1, 'Product \"Nem chua rán\" was deleted', '::1', '2019-09-10 14:21:24', '2019-09-10 14:21:24');
+INSERT INTO `activity_log` VALUES (53, 1, 'Product \"Trân châu đen\" was deleted', '::1', '2019-09-10 14:21:27', '2019-09-10 14:21:27');
+INSERT INTO `activity_log` VALUES (54, 1, 'Product \"Hướng dương\" was deleted', '::1', '2019-09-10 14:21:30', '2019-09-10 14:21:30');
+INSERT INTO `activity_log` VALUES (55, 1, 'Product \"Trà chanh truyền thống\" was deleted', '::1', '2019-09-10 14:22:22', '2019-09-10 14:22:22');
+INSERT INTO `activity_log` VALUES (56, 1, 'Product \"Trà chanh truyền thống\" was created', '::1', '2019-09-10 14:23:06', '2019-09-10 14:23:06');
+INSERT INTO `activity_log` VALUES (57, 1, 'Product \"Trà đào nhiệt đới\" was created', '::1', '2019-09-10 14:25:18', '2019-09-10 14:25:18');
+INSERT INTO `activity_log` VALUES (58, 1, 'Product \"Trà quất nha đam\" was created', '::1', '2019-09-10 14:25:47', '2019-09-10 14:25:47');
+INSERT INTO `activity_log` VALUES (59, 1, 'Product \"Trà chanh yoyo\" was created', '::1', '2019-09-10 14:28:29', '2019-09-10 14:28:29');
+INSERT INTO `activity_log` VALUES (60, 1, 'Product \"Trà kim quất chanh leo\" was created', '::1', '2019-09-10 14:34:55', '2019-09-10 14:34:55');
+INSERT INTO `activity_log` VALUES (61, 1, 'Product \"Trà thanh đào\" was created', '::1', '2019-09-10 14:35:42', '2019-09-10 14:35:42');
+INSERT INTO `activity_log` VALUES (62, 1, 'Product \"Trà chanh dâu\" was created', '::1', '2019-09-10 14:37:08', '2019-09-10 14:37:08');
+INSERT INTO `activity_log` VALUES (63, 1, 'Product \"Trà chanh Nam Dương\" was created', '::1', '2019-09-10 14:38:25', '2019-09-10 14:38:25');
+INSERT INTO `activity_log` VALUES (64, 1, 'Product \"Lê tuyết sốt xoài\" was created', '::1', '2019-09-10 14:41:18', '2019-09-10 14:41:18');
+INSERT INTO `activity_log` VALUES (65, 1, 'Product \"Trà táo đỏ long nhãn\" was created', '::1', '2019-09-10 14:42:33', '2019-09-10 14:42:33');
 
 -- ----------------------------
 -- Table structure for admins
@@ -114,18 +152,7 @@ CREATE TABLE `bills`  (
   `table_number` int(11) NULL DEFAULT NULL,
   `note` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of bills
--- ----------------------------
-INSERT INTO `bills` VALUES (1, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":1,\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":25000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":1,\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":10000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":1,\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":15000}],\"1\":[{\"rowId\":\"027c91341fd5cf4d2579b49c4b6a90da\",\"id\":\"1\",\"name\":\"Tr\\u00e0 chanh truy\\u1ec1n th\\u1ed1ng\",\"qty\":1,\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":10000}]},\"totalMoney\":60000,\"total\":4,\"priceFinal\":48000,\"disCount\":12000}', 4, 60000, 48000, 20, '2019-09-08 18:49:34', '2019-09-08 18:49:34', NULL, NULL, NULL);
-INSERT INTO `bills` VALUES (2, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":1,\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":25000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":1,\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":10000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":1,\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":15000}]},\"totalMoney\":50000,\"total\":3,\"priceFinal\":40000,\"disCount\":10000}', 3, 50000, 40000, 20, '2019-09-08 18:50:56', '2019-09-08 18:50:56', 'Cửa Hàng Tiện Ích', 12, 'abcd1234');
-INSERT INTO `bills` VALUES (3, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":\"3\",\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":75000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":\"2\",\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":20000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":\"2\",\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":30000}]},\"totalMoney\":125000,\"total\":7,\"priceFinal\":125000,\"disCount\":0}', 7, 125000, 125000, 0, '2019-09-08 19:11:54', '2019-09-08 19:11:54', NULL, NULL, NULL);
-INSERT INTO `bills` VALUES (4, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":\"3\",\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":75000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":\"2\",\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":20000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":\"2\",\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":30000}]},\"totalMoney\":125000,\"total\":7,\"priceFinal\":125000,\"disCount\":0}', 7, 125000, 125000, 0, '2019-09-08 19:12:44', '2019-09-08 19:12:44', NULL, NULL, NULL);
-INSERT INTO `bills` VALUES (5, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":\"3\",\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":75000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":\"2\",\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":20000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":\"2\",\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":30000}]},\"totalMoney\":125000,\"total\":7,\"priceFinal\":125000,\"disCount\":0}', 7, 125000, 125000, 0, '2019-09-08 19:14:10', '2019-09-08 19:14:10', NULL, NULL, NULL);
-INSERT INTO `bills` VALUES (6, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":\"3\",\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":75000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":\"2\",\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":20000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":\"2\",\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":30000}]},\"totalMoney\":125000,\"total\":7,\"priceFinal\":125000,\"disCount\":0}', 7, 125000, 125000, 0, '2019-09-08 19:14:23', '2019-09-08 19:14:23', NULL, NULL, NULL);
-INSERT INTO `bills` VALUES (7, 1, 1, '{\"list\":{\"8\":[{\"rowId\":\"18d6934483b994fb9943b43b7d7646bf\",\"id\":\"8\",\"name\":\"N\\u01b0\\u1edbc cam\",\"qty\":\"3\",\"price\":25000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":5250,\"subtotal\":75000}],\"7\":[{\"rowId\":\"808821852042d8780b9f862c35c42c68\",\"id\":\"7\",\"name\":\"Tr\\u00e0 qu\\u1ea5t\",\"qty\":\"2\",\"price\":10000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":2100,\"subtotal\":20000}],\"2\":[{\"rowId\":\"370d08585360f5c568b18d1f2e4ca1df\",\"id\":\"2\",\"name\":\"Tr\\u00e0 \\u0111\\u00e0o nhi\\u1ec7t \\u0111\\u1edbi\",\"qty\":\"2\",\"price\":15000,\"weight\":0,\"options\":[],\"discount\":0,\"tax\":3150,\"subtotal\":30000}]},\"totalMoney\":125000,\"total\":7,\"priceFinal\":125000,\"disCount\":0}', 7, 125000, 125000, 0, '2019-09-08 19:14:33', '2019-09-08 19:14:33', NULL, NULL, NULL);
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for categories
@@ -298,16 +325,16 @@ CREATE TABLE `products`  (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (1, NULL, NULL, 'Trà chanh truyền thống', NULL, 5000, 10000, 'trachanh.jpg', 'cốc', NULL, 1, NULL, 1, 1);
-INSERT INTO `products` VALUES (2, NULL, NULL, 'Trà đào nhiệt đới', NULL, 5000, 15000, 'tradao.jpg', 'cốc', NULL, 1, NULL, 1, 1);
-INSERT INTO `products` VALUES (3, NULL, NULL, 'Hướng dương', NULL, 3000, 10000, 'huongduong.jpg', 'túi', NULL, 7, 999, 1, 1);
-INSERT INTO `products` VALUES (4, NULL, NULL, 'Trân châu trắng', NULL, 1000, 3000, 'tranchautrang.jpg', 'g', NULL, 3, 1000, 0, 0);
-INSERT INTO `products` VALUES (5, NULL, NULL, 'Trân châu đen', NULL, 1000, 5000, 'tranchauden.jpg', 'g', NULL, 3, 1000, 0, 1);
-INSERT INTO `products` VALUES (6, NULL, NULL, 'Nem chua rán', NULL, 3000, 5000, 'nemchuaran.jpg', 'cái', NULL, 5, 100, 1, 1);
-INSERT INTO `products` VALUES (7, NULL, NULL, 'Trà quất', NULL, 5000, 10000, 'traquat.jpg', 'cốc', NULL, 1, NULL, 1, 1);
-INSERT INTO `products` VALUES (8, NULL, NULL, 'Nước cam', NULL, 10000, 25000, 'nuoccam.jpg', 'cốc', NULL, 1, NULL, 1, 1);
-INSERT INTO `products` VALUES (9, NULL, NULL, 'Nha đam', NULL, 3000, 5000, 'nhadam.jpg', 'g', NULL, 3, 100, 0, 1);
-INSERT INTO `products` VALUES (10, NULL, NULL, 'Trà gừng', NULL, 5000, 15000, 'tragung.jpg', 'ly', NULL, 2, NULL, NULL, 0);
+INSERT INTO `products` VALUES (1, '2019-09-10 14:23:06', '2019-09-10 14:23:06', 'Trà chanh truyền thống', 'tra-chanh-truyen-thong', NULL, 10000, '/photos/1/trachanh.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (2, '2019-09-10 14:25:18', '2019-09-10 14:25:18', 'Trà đào nhiệt đới', 'tra-dao-nhiet-doi', NULL, 10000, '/photos/1/tradao.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (3, '2019-09-10 14:25:46', '2019-09-10 14:25:46', 'Trà quất nha đam', 'tra-quat-nha-dam', NULL, 10000, '/photos/1/traquat.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (4, '2019-09-10 14:28:29', '2019-09-10 14:28:29', 'Trà chanh yoyo', 'tra-chanh-yoyo', NULL, 12000, '/photos/1/trachanh.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (5, '2019-09-10 14:34:55', '2019-09-10 14:34:55', 'Trà kim quất chanh leo', 'tra-kim-quat-chanh-leo', NULL, 15000, '/photos/1/kimquat.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (6, '2019-09-10 14:35:42', '2019-09-10 14:35:42', 'Trà thanh đào', 'tra-thanh-dao', NULL, 15000, '/photos/1/tradao.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (7, '2019-09-10 14:37:08', '2019-09-10 14:37:08', 'Trà chanh dâu', 'tra-chanh-dau', NULL, 15000, '/photos/1/tra-chanh-dau-tay.png', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (8, '2019-09-10 14:38:25', '2019-09-10 14:38:25', 'Trà chanh Nam Dương', 'tra-chanh-nam-duong', NULL, 19000, '/photos/1/trachanhnamduong.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (9, '2019-09-10 14:41:18', '2019-09-10 14:41:18', 'Lê tuyết sốt xoài', 'le-tuyet-sot-xoai', NULL, 19000, '/photos/1/letuyetxoai.jpg', 'cốc', NULL, 1, NULL, 1, 1);
+INSERT INTO `products` VALUES (10, '2019-09-10 14:42:33', '2019-09-10 14:42:33', 'Trà táo đỏ long nhãn', 'tra-tao-do-long-nhan', NULL, 19000, '/photos/1/taodolongnhan.jpg', 'cốc', NULL, 1, NULL, 1, 1);
 
 -- ----------------------------
 -- Table structure for provinces

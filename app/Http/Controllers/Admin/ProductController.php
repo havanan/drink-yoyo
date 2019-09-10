@@ -15,10 +15,12 @@ class ProductController extends Controller
 {
 
     public function index(){
-        $data = Product::all();
+        $data = $this->getProductList();
         return view('admin.product.index',compact('data'));
     }
-
+    public function getProductList(){
+        return Product::orderBy('id','desc')->get();
+    }
     public function getProduct(Request $request){
         $params = $request->all();
         $data = Product::paginate(10);
@@ -75,7 +77,6 @@ class ProductController extends Controller
        $params = $request->all();
        $params['slug'] = Str::slug($params['name']);
        unset($params['_token']);
-
        $create = Product::create($params);
 
        if ($create){
@@ -84,6 +85,21 @@ class ProductController extends Controller
            return back()->with('errors','Tạo sản phẩm thất bại');
        }
 
+    }
+    public function delete(Request $request){
+        $id = $request->get('id');
+        $info = Product::find($id);
+        if (empty($info)){
+            return 'false';
+        }
+        $delete = $info->delete();
+        if ($delete){
+            return 'true';
+        }
+    }
+    public function getList(){
+        $data = $this->getProductList();
+        return view('admin.product.table_body',compact('data'));
     }
 
 }

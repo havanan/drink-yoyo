@@ -937,3 +937,6 @@ tr.group:hover {
     margin-top:15px;
     width: 100%;
 }
+.bill-preview{
+    height: 950px !important;
+}

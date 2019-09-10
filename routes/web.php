@@ -30,6 +30,14 @@ Route::namespace('Frontend')->middleware('auth:web')->group(function (){
 
     });
 
+    Route::prefix('hoa-don')->group(function(){
+
+        Route::get('danh-sach', 'HomeController@billList')->name('billList');
+        Route::post('getBillInfo', 'HomeController@getBillInfo')->name('getBillInfo');
+        Route::post('getBillBarcode', 'HomeController@getBillBarcode')->name('getBillBarcode');
+
+    });
+
 });
 
 Route::prefix('admin')->group(function() {
@@ -66,6 +74,8 @@ Route::prefix('admin')->group(function() {
             Route::post('tao-moi', 'ProductController@insert')->name('admin.product.insert');
             Route::get('get-product-list', 'ProductController@getProduct')->name('admin.product.getProduct');
             Route::get('findProductTypes/{categories_id}', 'ProductController@findProductTypes')->name('admin.product.findProductTypes');
+            Route::get('getList', 'ProductController@getList')->name('admin.product.getList');
+
             Route::post('xoa-sp', 'ProductController@delete')->name('admin.product.delete');
 
         });

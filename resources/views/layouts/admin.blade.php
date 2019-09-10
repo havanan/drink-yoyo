@@ -44,7 +44,7 @@
             <div class="page-logo">
                 <a href="index.html">
                     <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
-                    <span class="logo-default" >{{ config('app.name', 'Laravel') }}</span> </a>
+                    <span class="logo-default" >{{ config('app.name', 'YOYO') }}</span> </a>
             </div>
             <!-- logo end -->
             <ul class="nav navbar-nav navbar-left in">
@@ -245,7 +245,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    <i class="icon-logout"></i> Log Out
+                                    <i class="icon-logout"></i> Đăng xuất
                                 </a>
                             </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
