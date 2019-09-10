@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Common;
+use App\Model\Product;
 use App\Model\ProductCategory;
 use App\Model\ProductType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
 
     public function index(){
-        return view('admin.product.index');
+        $data = Product::all();
+        return view('admin.product.index',compact('data'));
+    }
+
+    public function getProduct(Request $request){
+        $params = $request->all();
+        $data = Product::paginate(10);
+        $data = Common::toTable($data);
+        return $data;
     }
     public function create(){
         $categories_data = ProductCategory::where('status',1)->get();
@@ -62,7 +73,17 @@ class ProductController extends Controller
     }
     public function insert(Request $request){
        $params = $request->all();
+       $params['slug'] = Str::slug($params['name']);
        unset($params['_token']);
+
+       $create = Product::create($params);
+
+       if ($create){
+            return redirect()->route('admin.product.index')->with('success','Tạo sản phẩm thành công !');
+       }else{
+           return back()->with('errors','Tạo sản phẩm thất bại');
+       }
+
     }
 
 }

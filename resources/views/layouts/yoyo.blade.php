@@ -21,7 +21,10 @@
     <!-- Reponsive -->
     <link rel="stylesheet" type="text/css" href="{{asset('yoyo')}}/stylesheets/responsive.css">
 
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/sweet-alert/sweetalert.min.css')}}">
+
     <link rel="shortcut icon" href="{{asset('yoyo')}}/favicon/favicon.png">
+
     @yield('css')
 
 </head>
@@ -181,6 +184,8 @@
 <script type="text/javascript" src="{{asset('yoyo')}}/javascript/jquery.mCustomScrollbar.js"></script>
 <script type="text/javascript" src="{{asset('yoyo')}}/javascript/waves.min.js"></script>
 <script type="text/javascript" src="{{asset('yoyo')}}/javascript/main.js"></script>
+<script type="text/javascript" src="{{asset('admin/assets/sweet-alert/sweetalert.min.js')}}"></script>
+
 @yield('js')
 
 </body>

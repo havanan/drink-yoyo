@@ -34,4 +34,7 @@ class Bill extends Model implements LogsActivityInterface
     public function getStaff(){
         return $this->hasOne(User::class,'id','staff_id')->where('status',1);
     }
+    public function getType(){
+        return $this->hasOne(ProductType::class,'id','type_id');
+    }
 }

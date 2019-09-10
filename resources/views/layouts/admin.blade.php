@@ -29,6 +29,7 @@
     <link href="{{asset('admin')}}/css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/css/responsive.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/css/theme-color.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/sweet-alert/sweetalert.min.css')}}">
     <!-- favicon -->
     <link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}" />
     @yield('css')
@@ -320,6 +321,8 @@
 <script src="{{asset('admin/assets/theme-color.js')}}" ></script>
 <!-- material -->
 <script src="{{asset('admin/assets/material/material.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin/assets/sweet-alert/sweetalert.min.js')}}"></script>
+
 @yield('js')
 </body>
 </html>

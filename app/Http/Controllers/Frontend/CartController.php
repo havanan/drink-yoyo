@@ -52,7 +52,10 @@ class CartController extends Controller
     public function payment(Request $request){
         $formData = $request->get('formData');
         $cartInfo = $this->getCartInfo($request);
+        if ($cartInfo['priceFinal'] <= 0){
 
+            return 'false';
+        }
         $formData['content'] = json_encode($cartInfo);
         $formData['staff_id'] = Auth::user()->id;
         $formData['total'] = $cartInfo['total'];

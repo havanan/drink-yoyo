@@ -21,15 +21,11 @@
 
         function genSelect2(class_name,data){
             $('.'+class_name).select2({
-                placeholder: {
-                    id: '-1', // the value of the option
-                    text: 'Vui lòng chọn mục sản phẩm'
-                },
                 data:data
             });
         }
+        var domain = "{{ url(config('lfm.url_prefix')) }}";
 
-        var domain = '{{route('admin.home')}}';
         $('#lfm').filemanager('image', {prefix: domain});
 
     </script>
@@ -54,12 +50,13 @@
                         <div class="col-md-4">
                             <div class="input-group">
                                    <span class="input-group-btn">
-                                     <a id="lfm" data-input="avatar" data-preview="holder" class="btn btn-primary">
+                                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
                                        <i class="fa fa-picture-o"></i> Chọn ảnh
                                      </a>
                                    </span>
-                                <input id="avatar" class="form-control hidden" type="text" name="avatar" >
+                                <input id="thumbnail" class="form-control hidden" type="text" name="avatar" >
                             </div>
+
                             <img id="holder" class="image-preview" src="{{asset('img/no_image.png')}}">
 
                         </div>

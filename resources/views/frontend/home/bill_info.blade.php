@@ -25,7 +25,6 @@
         <div class="col-md-12">
             <div class="invoice-title ">
                 <h2>Trà Chanh YoYo</h2>
-                <h3 class="pull-right">HĐ # {{$billInfo['id']}}</h3>
                 <p>72 Núi Vàng - Phường Trung Sơn</p>
                 <p>035 337 3135</p>
             </div>
@@ -36,6 +35,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <address>
+                        <h3 class="pull-right">HĐ # {{$billInfo['id']}}</h3>
                         <p><strong>Bàn số: {{$billInfo['table_number']}}</strong></p>
                         <p><strong>Khách hàng: {{$billInfo['customer_name']}}</strong></p>
                         <p>Nhân viên: {{$billInfo->getStaff->name}}</p>

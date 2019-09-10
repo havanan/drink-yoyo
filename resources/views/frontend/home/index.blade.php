@@ -1,6 +1,5 @@
 @extends('layouts.yoyo')
 @section('js')
-    <script src="{{asset('yoyo/javascript/bootbox.all.min.js')}}"></script>
     <script>
         var addUrl = '{{route('addToCart')}}';
         var payUrl = '{{route('payment')}}';
@@ -108,12 +107,13 @@
     </section><!-- /.flat-imagebox style2 -->
 
     <div class="modal fade bill-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div id="bodyBill"></div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="printBill()">In</button>
+                <button class="btn btn-primary" onclick="printBill()" ><i class="fa fa-print"></i> In</button>
+                <button class="btn btn-danger" data-dismiss="modal"> Đóng</button>
             </div>
         </div>
     </div>

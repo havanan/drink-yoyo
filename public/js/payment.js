@@ -36,10 +36,11 @@ function pay() {
     var data = getAllForm();
 
     if (data.customer_name == ''){
-        bootbox.alert({
-            message: "Tên khách hàng không được để trống !",
-            locale: 'vi'
-        });
+
+        swal("Cảnh Báo !", "Chưa nhập tên khách hàng!", "warning");
+
+        return false;
+
     }
     $.ajax({
         type:'POST',
@@ -52,8 +53,28 @@ function pay() {
             disCount:getDiscountInput()
         },
         success:function(data) {
-            console.log(data);
-            $('#bodyBill').html(data);
+
+            if (data === 'false'){
+
+                swal("Thanh Toán Lỗi !", "Vui lòng kiểm tra lại thông tin Order !", "error");
+
+                return false;
+
+            }else {
+                swal("Thanh Toán Thành Công !", "Vui lòng in hóa đơn trả khách !", "success");
+
+                $('#bodyBill').html(data);
+            }
+
+
+        },
+        error:function (e) {
+
+            swal("Thanh Toán Lỗi !", "Vui lòng kiểm tra lại thông tin Order !", "error");
+
+            return false;
+
+
         }
     });
 }
@@ -86,6 +107,14 @@ function getPriceDiscount() {
         },
         success:function(data) {
             genItemsList(data);
+        },
+        error:function (e) {
+
+            swal("Tính triết khấu lỗi!", "Vui lòng kiểm tra lại thông tin Order !", "error");
+
+            return false;
+
+
         }
     });
 }
@@ -103,6 +132,13 @@ function removeItem(rowId) {
         },
         success:function(data) {
             genItemsList(data);
+        },
+        error:function (e) {
+
+            swal("Xóa sản phẩm không thành công !", "Vui lòng kiểm tra lại thông tin Order !", "error");
+            return false;
+
+
         }
     });
 }
@@ -124,6 +160,12 @@ function updateCartItem(rowId) {
         },
         success:function(data) {
             genItemsList(data);
+        },
+        error:function (e) {
+
+            swal("Lỗi Cập nhật Bill !", "Vui lòng kiểm tra lại thông tin Order !", "error");
+            return false;
+
         }
     });
 }

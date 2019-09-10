@@ -15,6 +15,7 @@
             </div>
         </div>
         <div class="col-md-12">
+            @include('layouts.notification')
             <div class="card card-box">
                 <div class="card-head">
                     <header>Role List</header>
