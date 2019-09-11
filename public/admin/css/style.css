@@ -940,3 +940,6 @@ tr.group:hover {
 .bill-preview{
     height: 950px !important;
 }
+.mdl-progress{
+    width: auto;
+}

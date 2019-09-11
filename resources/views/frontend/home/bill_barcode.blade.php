@@ -8,13 +8,13 @@
                                 @if($item[0]['qty'] > 1)
                                     @for($i= 1;$i <= $item[0]['qty'];$i++)
                                         <div >
-                                             <span style="font-size: 10px"><strong>#{{$billInfo['id']}}-{{$item[0]['name']}}: {{number_format($item[0]['price'])}} VNĐ</strong></span>
+                                             <span style="font-size: 13px"><strong>#{{$billInfo['id']}}-{{$item[0]['name']}}: {{number_format($item[0]['price'])}} VNĐ</strong></span>
                                     
                                         </div>
                                     @endfor
                                 @else
                                     <div >
-                                             <span style="font-size: 10px"><strong>#{{$billInfo['id']}}-{{$item[0]['name']}}: {{number_format($item[0]['price'])}} VNĐ</strong></span>
+                                             <span style="font-size: 13px"><strong>#{{$billInfo['id']}}-{{$item[0]['name']}}: {{number_format($item[0]['price'])}} VNĐ</strong></span>
                                     </div>
                                 @endif
                             @endforeach

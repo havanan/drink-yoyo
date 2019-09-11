@@ -47,7 +47,11 @@ Route::prefix('admin')->group(function() {
     Route::get('login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::namespace('Admin')->middleware('auth:admin')->group(function (){
-        Route::get('dashboard', 'AdminController@index')->name('admin.index');
+        Route::prefix('dashboard')->group(function(){
+            Route::get('/', 'AdminController@index')->name('admin.index');
+            Route::post('get-data', 'AdminController@findData')->name('admin.dashboard.findData');
+        });
+
 
         Route::prefix('user')->group(function(){
             Route::get('pro-file', 'UserController@profile')->name('admin.user.profile');

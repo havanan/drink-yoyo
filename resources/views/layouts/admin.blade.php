@@ -33,6 +33,20 @@
     <!-- favicon -->
     <link rel="shortcut icon" href="{{asset('admin/img/favicon.ico')}}" />
     @yield('css')
+<!-- start js include path -->
+    <script src="{{asset('admin/assets/jquery.min.js')}}" ></script>
+    <script src="{{asset('admin/assets/popper/popper.js')}}" ></script>
+    <script src="{{asset('admin/assets/jquery.blockui.min.js')}}" ></script>
+    <script src="{{asset('admin/assets/jquery.slimscroll.js')}}"></script>
+    <!-- bootstrap -->
+    <script src="{{asset('admin/assets/bootstrap/js/bootstrap.min.js')}}" ></script>
+    <!-- Common js-->
+    <script src="{{asset('admin/assets/app.js')}}" ></script>
+    <script src="{{asset('admin/assets/layout.js')}}" ></script>
+    <script src="{{asset('admin/assets/theme-color.js')}}" ></script>
+    <!-- material -->
+    <script src="{{asset('admin/assets/material/material.min.js')}}"></script>
+    @yield('js-top')
 </head>
 <!-- END HEAD -->
 <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white white-sidebar-color logo-indigo">
@@ -308,19 +322,7 @@
     </div>
     <!-- end footer -->
 </div>
-<!-- start js include path -->
-<script src="{{asset('admin/assets/jquery.min.js')}}" ></script>
-<script src="{{asset('admin/assets/popper/popper.js')}}" ></script>
-<script src="{{asset('admin/assets/jquery.blockui.min.js')}}" ></script>
-<script src="{{asset('admin/assets/jquery.slimscroll.js')}}"></script>
-<!-- bootstrap -->
-<script src="{{asset('admin/assets/bootstrap/js/bootstrap.min.js')}}" ></script>
-<!-- Common js-->
-<script src="{{asset('admin/assets/app.js')}}" ></script>
-<script src="{{asset('admin/assets/layout.js')}}" ></script>
-<script src="{{asset('admin/assets/theme-color.js')}}" ></script>
-<!-- material -->
-<script src="{{asset('admin/assets/material/material.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('admin/assets/sweet-alert/sweetalert.min.js')}}"></script>
 <script type="text/javascript">
     var url = '{{url()->current()}}'

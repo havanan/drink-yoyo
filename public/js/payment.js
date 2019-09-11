@@ -34,10 +34,10 @@ function clearForm() {
 function pay() {
     var data = getAllForm();
 
-    if (data.customer_name == ''){
-        swal("Cảnh Báo !", "Chưa nhập tên khách hàng!", "warning");
-        return false;
-    }
+    // if (data.customer_name == ''){
+    //     swal("Cảnh Báo !", "Chưa nhập tên khách hàng!", "warning");
+    //     return false;
+    // }
     if (data.table_number == ''){
         swal("Cảnh Báo !", "Chưa nhập số bàn!", "warning");
         return false;
@@ -54,11 +54,10 @@ function pay() {
         },
         success:function(data) {
 
-            if (data === 'false'){
-                swal("Thanh Toán Lỗi !", "Vui lòng kiểm tra lại thông tin Order !", "error");
-                return false;
-            }else {
+            if (data === 'true'){
                 swal("Thanh Toán Thành Công !", "Vui lòng in hóa đơn trả khách !", "success");
+            }else {
+                swal("Thanh Toán Lỗi !", "Vui lòng kiểm tra lại thông tin Order !", "error");
                 return false;
             }
         },

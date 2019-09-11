@@ -29,7 +29,6 @@
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Khách hàng</th>
                             <th>Người bán</th>
                             <th>Bàn</th>
                             <th>Số lượng</th>

@@ -15,7 +15,7 @@ class BillController extends Controller
         return view('admin.bill.index',compact('data'));
     }
     public function getList(){
-        $data = Bill::withTrashed()->get();
+        $data = Bill::withTrashed()->orderBy('id','desc')->get();
         return $data;
     }
     public function delete(Request $request){
@@ -31,6 +31,5 @@ class BillController extends Controller
                 return 'true';
             }
         }
-
     }
 }

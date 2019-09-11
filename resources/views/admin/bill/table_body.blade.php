@@ -2,7 +2,6 @@
     @foreach($data as $key => $item)
         <tr>
             <td>{{$key+1}}</td>
-            <td>{{$item->customer_name}}</td>
             <td>{{$item->getStaff != null ? $item->getStaff->name : ''}}</td>
             <td>{{$item->table_number}}</td>
             <td>{{$item->total}}</td>

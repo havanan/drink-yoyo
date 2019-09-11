@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Table;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -55,7 +56,37 @@ class Controller extends BaseController
         $cartInfo['disCount'] = $disCountPrice;
         return $cartInfo;
     }
-    public function roundQuick($value){
+    public function getRoundNumber($value){
         return round($value,2);
+    }
+    public function getMonth(){
+        $data[0] = Carbon::now()->startOfMonth()->format('Y-m-d');
+        $data[1] = Carbon::now()->endOfMonth()->format('Y-m-d');
+        return $data;
+    }
+    public function getWeek(){
+        $data[0] = Carbon::now()->startOfWeek()->format('Y-m-d');
+        $data[1] = Carbon::now()->endOfWeek()->format('Y-m-d');
+        return $data;
+    }
+    public function genTime($time_type){
+        $data = array();
+        switch ($time_type){
+            case $time_type == 'yesterday':
+                $data['date'] = Carbon::now()->subDay()->format('Y-m-d');
+                break;
+            case $time_type == 'weekly':
+                $data['week'] = $this->getWeek();
+                break;
+            case $time_type == 'monthly':
+                $data['month'] = $this->getMonth();
+                break;
+            default:
+                $data['date'] = Carbon::now()->format('Y-m-d');
+        }
+        return $data;
+    }
+    public function getPercent($params){
+        return ($params[1]/$params[0])*100;
     }
 }
