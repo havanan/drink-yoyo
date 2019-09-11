@@ -104,7 +104,7 @@ function makeLineChart(name,data) {
             type:'line', data: {
                 labels:data.labels,
                 datasets:[ {
-                    label: "",
+                    label: "Doanh thu từng ngày",
                     backgroundColor: window.chartColors.red,
                     borderColor: window.chartColors.blue,
                     data: data.data,
