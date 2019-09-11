@@ -35,7 +35,7 @@
                             <th>Số lượng</th>
                             <th>Tổng tiền</th>
                             <th>Khuyến mãi</th>
-                            <th>Giá cuói</th>
+                            <th>Giá cuối</th>
                             <th>Mô tả</th>
                             <th>Tạo lúc</th>
                             <th>Xóa lúc</th>

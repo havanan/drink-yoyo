@@ -10,7 +10,6 @@
         var billInfoUrl = '{{route('getBillInfo')}}';
         var billBarcodeUrl = '{{route('getBillBarcode')}}';
         var billStaffUrl = '{{route('getBillStaff')}}';
-
     </script>
     <script src="{{asset('js/payment.js')}}"></script>
 @endsection
@@ -22,59 +21,56 @@
                     <div class="product-wrap">
                         <div class="product-tab style1">
                             <ul class="tab-list">
-                                @if(count($product_categories) > 0)
-                                    @foreach($product_categories as $key => $item)
-                                        <li class="@if($key==0) active @endif "><span class="uppercase">{{$item->name}}</span></li>
+                                @if(count($product_types) > 0)
+                                    @foreach($product_types as $key => $type)
+                                        @if($type->getAllProduct != null && count($type->getAllProduct) > 0)
+                                        <li class="@if($key==0) active @endif "><span class="uppercase">{{$type->name}}</span></li>
+                                        @endif
                                     @endforeach
                                 @endif
                             </ul><!-- /.tab-list -->
                         </div><!-- /.product-tab style1 -->
                         <div class="tab-item">
-                            @if(count($product_categories) > 0)
-                                @foreach($product_categories as $key => $item)
+                            @if(count($product_types) > 0)
+                                @foreach($product_types as $key => $type)
+                                    @if($type->getAllProduct != null && count($type->getAllProduct) > 0)
                                     <div class="row">
-                                        @if(isset($item->getAllType) && count($item->getAllType) > 0)
-                                            @foreach($item->getAllType as $type)
-                                                <div class="col-md-12">
-                                                    <div class="container-fluid">
-                                                        <strong class="uppercase"> {{$type->name}}</strong>
-                                                        <div class="row">
-                                                            @if($type->getAllProduct != null)
-                                                                @foreach($type->getAllProduct as $product)
-                                                                    <div class="col-md-3">
-                                                                        <div class="product-box">
-                                                                            <div class="imagebox style2">
-                                                                                <div class="box-image">
-                                                                                    <a href="#" title="{{$product->name}}">
-                                                                                        <img src="{{asset($product->avatar)}}" alt="{{$product->name}}" class="img-item">
-                                                                                    </a>
-                                                                                </div><!-- /.box-image -->
-                                                                                <div class="box-content">
-                                                                                    <div class="product-name">
-                                                                                        <a href="#" title="">{{$product->name}}</a>
-                                                                                    </div>
-                                                                                    <div class="price">
-                                                                                        <span class="sale">{{number_format($product->price)}} VNĐ</span>
-                                                                                    </div>
-                                                                                </div><!-- /.box-content -->
-                                                                                <div class="box-bottom">
-                                                                                    <div class="btn-add-cart">
-                                                                                        <a class="table-item" onclick="addToCart({{$product->id}})">
-                                                                                            <img src="{{asset('yoyo/images/icons/add-cart.png')}}" alt="">Chọn
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div><!-- /.box-bottom -->
-                                                                            </div><!-- /.imagebox style2 -->
-                                                                        </div><!-- /.product-box -->
-                                                                    </div><!-- /.col-md-6 -->
-                                                                @endforeach
-                                                            @endif
-                                                        </div>
-                                                    </div>
+                                        <div class="col-md-12">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    @foreach($type->getAllProduct as $product)
+                                                        <div class="col-md-3">
+                                                            <div class="product-box">
+                                                                <div class="imagebox style2">
+                                                                    <div class="box-image">
+                                                                        <a href="#" title="{{$product->name}}">
+                                                                            <img src="{{asset($product->avatar)}}" alt="{{$product->name}}" class="img-item">
+                                                                        </a>
+                                                                    </div><!-- /.box-image -->
+                                                                    <div class="box-content">
+                                                                        <div class="product-name">
+                                                                            <a href="#" title="">{{$product->name}}</a>
+                                                                        </div>
+                                                                        <div class="price">
+                                                                            <span class="sale">{{number_format($product->price)}} VNĐ</span>
+                                                                        </div>
+                                                                    </div><!-- /.box-content -->
+                                                                    <div class="box-bottom">
+                                                                        <div class="btn-add-cart">
+                                                                            <a class="table-item" onclick="addToCart({{$product->id}})">
+                                                                                <img src="{{asset('yoyo/images/icons/add-cart.png')}}" alt="">Chọn
+                                                                            </a>
+                                                                        </div>
+                                                                    </div><!-- /.box-bottom -->
+                                                                </div><!-- /.imagebox style2 -->
+                                                            </div><!-- /.product-box -->
+                                                        </div><!-- /.col-md-6 -->
+                                                    @endforeach
                                                 </div>
-                                            @endforeach
-                                        @endif
+                                            </div>
+                                        </div>
                                     </div><!-- /.row -->
+                                    @endif
                                 @endforeach
                             @endif
                         </div><!-- /.tab-item -->

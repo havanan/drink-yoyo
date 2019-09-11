@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Model\Bill;
 use App\Model\ProductCategory;
 use App\Http\Controllers\Controller;
+use App\Model\ProductType;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -12,9 +13,9 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $product_categories = ProductCategory::where('status',1)->get();
+        $product_types = ProductType::where('status',1)->get();
         $cartInfo = $this->getCartInfo();
-        return view('frontend.home.index',compact('product_categories','cartInfo'));
+        return view('frontend.home.index',compact('cartInfo','product_types'));
     }
     public function billList(){
 //        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');

@@ -55,4 +55,7 @@ class Controller extends BaseController
         $cartInfo['disCount'] = $disCountPrice;
         return $cartInfo;
     }
+    public function roundQuick($value){
+        return round($value,2);
+    }
 }

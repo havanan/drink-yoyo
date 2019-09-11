@@ -1,6 +1,9 @@
 @extends('layouts.admin')
+@section('title')
+    Bảng Tổng Hợp
+@endsection
 @section('breadcrumb')
-    Dashboard
+    Bảng Tổng Hợp
 @endsection
 @section('js')
     <!-- chart js -->
@@ -15,15 +18,15 @@
         <div class="row">
             <div class="col-xl-3 col-md-6 col-12">
                 <div class="info-box bg-blue">
-                    <span class="info-box-icon push-bottom"><i class="material-icons">group</i></span>
+                    <span class="info-box-icon push-bottom"><i class="material-icons">content_paste</i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Appointments</span>
-                        <span class="info-box-number">450</span>
+                        <span class="info-box-text">Tổng Đơn Trong ngày</span>
+                        <span class="info-box-number">{{$totalBill['amount']}}</span><span> đơn</span>
                         <div class="progress">
-                            <div class="progress-bar" style="width: 45%"></div>
+                            <div class="progress-bar" style="width: {{$billPercent}}%"></div>
                         </div>
                         <span class="progress-description">
-						                    45% Increase in 28 Days
+						                    {{$billPercent}}% trong tháng
 						                  </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -33,15 +36,15 @@
             <!-- /.col -->
             <div class="col-xl-3 col-md-6 col-12">
                 <div class="info-box bg-orange">
-                    <span class="info-box-icon push-bottom"><i class="material-icons">person</i></span>
+                    <span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">New Patients</span>
-                        <span class="info-box-number">155</span>
+                        <span class="info-box-text">Tổng Tiền Trong Ngày</span>
+                        <span class="info-box-number">{{number_format($totalBill['money'])}}</span><span> vnđ</span>
                         <div class="progress">
-                            <div class="progress-bar" style="width: 40%"></div>
+                            <div class="progress-bar" style="width: {{$billPercentMoney}}%"></div>
                         </div>
                         <span class="progress-description">
-						                    40% Increase in 28 Days
+						                    {{$billPercentMoney}}% trong tháng
 						                  </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -51,16 +54,14 @@
             <!-- /.col -->
             <div class="col-xl-3 col-md-6 col-12">
                 <div class="info-box bg-purple">
-                    <span class="info-box-icon push-bottom"><i class="material-icons">content_cut</i></span>
+                    <span class="info-box-icon push-bottom"><i class="material-icons">local_drink</i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Operations</span>
-                        <span class="info-box-number">52</span>
+                        <span class="info-box-text">Menu</span>
+                        <span class="info-box-number">{{$totalMenu}}</span><span> món</span>
                         <div class="progress">
-                            <div class="progress-bar" style="width: 85%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
-                        <span class="progress-description">
-						                    85% Increase in 28 Days
-						                  </span>
+                        <span class="progress-description">Tổng món của quán</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -69,16 +70,14 @@
             <!-- /.col -->
             <div class="col-xl-3 col-md-6 col-12">
                 <div class="info-box bg-success">
-                    <span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
+                    <span class="info-box-icon push-bottom"><i class="material-icons">people_outline</i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Hospital Earning</span>
-                        <span class="info-box-number">13,921</span><span>$</span>
+                        <span class="info-box-text">Nhân Viên</span>
+                        <span class="info-box-number">{{$staff}}</span><span> người</span>
                         <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
-                        <span class="progress-description">
-						                    50% Increase in 28 Days
-						                  </span>
+                        <span class="progress-description">Tổng nhân viên</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
