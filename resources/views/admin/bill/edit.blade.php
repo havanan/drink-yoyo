@@ -1,6 +1,4 @@
 @extends('layouts.admin')
-@section('title') Sản phẩm @endsection
-
 @section('breadcrumb')
     Sửa sản phẩm
 @endsection

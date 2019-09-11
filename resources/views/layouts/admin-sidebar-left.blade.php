@@ -53,6 +53,11 @@
                         {{--</li>--}}
                     </ul>
                 </li>
+                <li class="nav-item  ">
+                    <a href="{{route('admin.bill.index')}}" class="nav-link nav-toggle"> <i class="material-icons">assignment_turned_in</i>
+                        <span class="title">Hóa đơn</span>
+                    </a>
+                </li>
 {{--                <li class="nav-item  ">--}}
 {{--                    <a href="#" class="nav-link nav-toggle">--}}
 {{--                        <i class="material-icons">dvr</i>--}}

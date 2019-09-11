@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="description" content="Trà chanh yoyo" />
     <meta name="author" content="Anhv" />
-    <title>Admin @yield('title')</title>
+    <title>Admin | @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- google font -->

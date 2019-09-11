@@ -41,8 +41,8 @@
                 <address style="padding-left: 10px">
                     <h4>HĐ # {{$billInfo['id']}}</h4>
                     <span><strong>Bàn số: {{$billInfo['table_number']}}</strong></span>
-                    <br>
-                    <span><strong>Khách hàng: {{$billInfo['customer_name']}}</strong></span>
+                    {{--<br>--}}
+                    {{--<span><strong>Khách hàng: {{$billInfo['customer_name']}}</strong></span>--}}
                     <br>
                     <span>Nhân viên: {{$billInfo->getStaff->name}}</span>
                     <br>
@@ -98,7 +98,7 @@
                                 <h4><strong>Giá thanh toán: </strong></h4>
                             </div>
                             <div style="float: right;text-align: right">
-                                <h4><strong> {{number_format($billInfo['discount'])}} VNĐ</strong></h4>
+                                <h4><strong> {{number_format($billInfo['discount'])}} %</strong></h4>
                                 <h4><strong> {{number_format($billInfo['total_money'])}} VNĐ</strong></h4>
                                 <h4><strong> {{number_format($billInfo['price_final'])}} VNĐ</strong></h4>
                             </div>

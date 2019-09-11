@@ -9,7 +9,7 @@
         display: inline-block;
     }
 </style>
-<div class="container body-bill" id="billPrint" style="  width: 250px; margin: 0 auto;height: 600px;">
+<div class="container body-bill" id="billPrint" style="  width: 200px; margin: 0 auto;height: 600px;">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">

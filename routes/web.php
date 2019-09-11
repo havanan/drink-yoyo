@@ -81,5 +81,13 @@ Route::prefix('admin')->group(function() {
             Route::post('xoa-sp', 'ProductController@delete')->name('admin.product.delete');
 
         });
+        Route::prefix('hoa-don')->group(function(){
+            Route::get('/', 'BillController@index')->name('admin.bill.index');
+            Route::get('getList', 'BillController@getList')->name('admin.bill.getList');
+            Route::get('sua/{id}', 'BillController@edit')->name('admin.bill.edit');
+            Route::post('cap-nhat', 'BillController@update')->name('admin.bill.update');
+            Route::post('xoa', 'BillController@delete')->name('admin.bill.delete');
+
+        });
     });
 });

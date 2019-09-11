@@ -1,7 +1,7 @@
 @extends('layouts.admin')
-@section('title') Sản phẩm @endsection
+@section('title') Hóa Đơn @endsection
 @section('breadcrumb')
-    Danh sách sản phẩm
+    Danh sách hóa đơn
 @endsection
 @section('css')
     <link href="{{asset('admin/assets/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -13,8 +13,8 @@
     <script src="{{asset('admin/js/product.js')}}"></script>
     <script>
         dataTableDefautl('dataTable');
-        var urlDelete = '{{route('admin.product.delete')}}';
-        var urlList = '{{route('admin.product.getList')}}';
+        var urlDelete = '{{route('admin.bill.delete')}}';
+        var urlList = '{{route('admin.bill.getList')}}';
 
     </script>
 @endsection
@@ -29,20 +29,22 @@
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên</th>
-                            <th>Giá nhập</th>
-                            <th>Giá bán</th>
-                            <th>Đơn vị</th>
+                            <th>Khách hàng</th>
+                            <th>Người bán</th>
+                            <th>Bàn</th>
                             <th>Số lượng</th>
-                            <th>Loại sản phẩm</th>
+                            <th>Tổng tiền</th>
+                            <th>Khuyến mãi</th>
+                            <th>Giá cuói</th>
                             <th>Mô tả</th>
-                            <th>Trạng thái</th>
                             <th>Tạo lúc</th>
+                            <th>Xóa lúc</th>
+                            <th>Người xóa</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody id="tableBody">
-                            @include('admin.product.table_body')
+                            @include('admin.bill.table_body')
                         </tbody>
                     </table>
                 </div>

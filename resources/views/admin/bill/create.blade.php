@@ -1,8 +1,6 @@
 @extends('layouts.admin')
-@section('title') Sản phẩm @endsection
-
 @section('breadcrumb')
-    Sửa sản phẩm
+    Tạo sản phẩm
 @endsection
 @section('css')
     <!-- Material Design Lite CSS -->
@@ -21,6 +19,7 @@
         var categories = '<?php echo json_encode($categories) ?>';
             categories = JSON.parse(categories);
         var domain = "{{ url(config('lfm.url_prefix')) }}";
+
         genSelect2('select2',categories);
         standAloneButton(domain);
     </script>
@@ -31,7 +30,7 @@
         <div class="container-fluid">
             <div class="card card-box">
                 <div class="card-head">
-                    <header>Sửa Sản Phẩm</header>
+                    <header>Tạo Sản Phẩm Mới</header>
                     <div class="tools">
                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -39,10 +38,9 @@
                     </div>
                 </div>
                 <div class="card-body no-padding height-9">
-                    @include('layouts.notification')
-                    <form method="post" action="{{route('admin.product.update')}}" class="row">
+
+                    <form method="post" action="{{route('admin.product.insert')}}" class="row">
                         @csrf
-                        <input type="hidden" name="id" value="{{$data['id']}}">
                         <div class="col-md-4">
                             <div class="input-group">
                                    <span class="input-group-btn">
@@ -50,17 +48,17 @@
                                        <i class="fa fa-picture-o"></i> Chọn ảnh
                                      </a>
                                    </span>
-                                <input id="thumbnail" class="form-control hidden" type="text" name="avatar" value="{{$data['avatar']}}" >
+                                <input id="thumbnail" class="form-control hidden" type="text" name="avatar" >
                             </div>
 
-                            <img id="holder" class="image-preview" src="{{$data['avatar'] != null ? asset('/').$data['avatar'] : asset('img/no_image.png')}}">
+                            <img id="holder" class="image-preview" src="{{asset('img/no_image.png')}}">
 
                         </div>
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" required value="{{$data['name']}}">
+                                        <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" required>
                                     </div>
                                 </div>
                             </div>
@@ -77,12 +75,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="number" min="0" class="form-control" name="amount" placeholder="Số lượng" value="{{$data['amount']}}">
+                                        <input type="number" min="0" class="form-control" name="amount" placeholder="Số lượng">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="unit" placeholder="Đơn vị" value="{{$data['unit']}}">
+                                        <input type="text" class="form-control" name="unit" placeholder="Đơn vị" value="cốc">
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +88,13 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá nhập" name="current_price" value="{{$data['current_price']}}">
+                                        <input type="number" min="0" class="form-control" placeholder="Giá nhập" name="current_price">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá bán" name="price" required value="{{$data['price']}}">
+                                        <input type="number" min="0" class="form-control" placeholder="Giá bán" name="price" required value="10000">
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +102,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="radio">
-                                            <input type="radio" name="status" id="status_show" value="1"  class="form-control" @if($data['status'] == 1) checked @endif>
+                                            <input type="radio" name="status" id="status_show" value="1" checked class="form-control">
                                             <label for="status_show">
                                                 Hiển thị
                                             </label>
@@ -115,7 +113,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="radio">
-                                            <input type="radio" name="status" id="status_hidden" value="0"  class="form-control" @if($data['status'] == 0) checked @endif>
+                                            <input type="radio" name="status" id="status_hidden" value="0"  class="form-control">
                                             <label for="status_hidden">
                                                 Ẩn
                                             </label>
@@ -127,7 +125,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="radio">
-                                            <input type="radio" name="type" id="type_show" value="1" class="form-control" @if($data['type'] == 1) checked @endif>
+                                            <input type="radio" name="type" id="type_show" value="1" checked class="form-control">
                                             <label for="type_show">
                                                 Đồ bán trực tiếp
                                             </label>
@@ -138,7 +136,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <div class="radio">
-                                            <input type="radio" name="type" id="type_hidden" value="0"  class="form-control" @if($data['type'] == 0) checked @endif>
+                                            <input type="radio" name="type" id="type_hidden" value="0"  class="form-control">
                                             <label for="type_hidden">
                                                 Topping
                                             </label>
@@ -149,14 +147,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="note" placeholder="Ghi chú">{{$data['note']}}</textarea>
+                                        <textarea class="form-control" name="note" placeholder="Ghi chú"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-right">
                                     <div class="form-group">
-                                        <button class="btn btn-info mr-3" type="submit">Sửa</button>
+                                        <button class="btn btn-info mr-3" type="submit">Tạo</button>
                                         <button class="btn btn-danger mr-3" type="reset">Nhập lại</button>
                                     </div>
                                 </div>
