@@ -52,7 +52,7 @@
                                         <td>{{$item->created_at != null ? date('H:i d/m/Y',strtotime($item->created_at)) : '-'}}</td>
                                         <td>
                                             <button class="btn btn-primary" data-toggle="modal" onclick="getBill({{$item->id}})" title="In hóa đơn khách hàng"><i class="fa fa-print"></i></button>
-                                            <button class="btn btn-primary" data-toggle="modal" onclick="getStaffBill({{$item->id}})" title="In phiếu đặt đồ"><i class="fa fa-sticky-note-o"></i></button>
+                                            <button class="btn btn-success" data-toggle="modal" onclick="getStaffBill({{$item->id}})" title="In phiếu đặt đồ"><i class="fa fa-sticky-note-o"></i></button>
                                             <button class="btn btn-danger"  data-toggle="modal" onclick="getBarcode({{$item->id}})" title="In tem nhãn"><i class="fa fa-barcode"></i></button>
                                         </td>
                                     </tr>
