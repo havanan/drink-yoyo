@@ -145,7 +145,7 @@ function updateCartItem(rowId) {
         }
     });
 }
-function getBill(id) {
+function getBill(id,) {
     $.ajax({
         type:'POST',
         url:billInfoUrl,
@@ -174,6 +174,34 @@ function getBarcode(id) {
     $.ajax({
         type:'POST',
         url:billBarcodeUrl,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            id:id,
+        },
+        success:function(data) {
+
+            if (data === 'false'){
+                swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+                return false;
+            }else {
+                $('#bodyBill').html(data);
+                $('.bill-body').modal('show');
+            }
+        },
+        error:function (e) {
+            swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+            return false;
+
+
+        }
+    });
+}
+function getStaffBill(id) {
+    $.ajax({
+        type:'POST',
+        url:billStaffUrl,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },

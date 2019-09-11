@@ -46,4 +46,16 @@ class HomeController extends Controller
         $cartInfo =json_decode($billInfo['content'],true);
         return view('frontend.home.bill_barcode',compact('cartInfo','billInfo'));
     }
+    public function getBillStaff(Request $request){
+        $id = $request->id;
+        if ($id == null){
+            $id = session('last_bill_id');
+        }
+        $billInfo = Bill::find($id);
+        if ($billInfo == null){
+            return 'false';
+        }
+        $cartInfo =json_decode($billInfo['content'],true);
+        return view('frontend.home.bill_staff',compact('cartInfo','billInfo'));
+    }
 }

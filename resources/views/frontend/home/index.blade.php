@@ -9,6 +9,8 @@
         var updateUrl = '{{route('update')}}';
         var billInfoUrl = '{{route('getBillInfo')}}';
         var billBarcodeUrl = '{{route('getBillBarcode')}}';
+        var billStaffUrl = '{{route('getBillStaff')}}';
+
     </script>
     <script src="{{asset('js/payment.js')}}"></script>
 @endsection
@@ -86,22 +88,28 @@
                             <div class="row" id="selected-product">
                                 @include('frontend.home.product_selected_list')
                             </div>
-                            <div class="btn-cart-totals">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="javascript:void(0)" class="table-item create" onclick="creatNewOrder()">Tạo Mới</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="javascript:void(0)" class="table-item checkout" onclick="pay()">Thanh Toán</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="javascript:void(0)" class="table-item update" onclick="getBill()" ><i class="fa fa-print"></i> In HĐ</a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="javascript:void(0)" class="table-item update" onclick="getBarcode()" ><i class="fa fa-barcode"></i> Tem</a>
-                                    </div>
+                            <div class="row ">
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary" title="Tạo Hóa Đơn Mới" onclick="creatNewOrder()"><i class="fa fa-plus"></i> <strong>Tạo Đơn Mới</strong></button>
                                 </div>
-                            </div><!-- /.btn-cart-totals -->
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-danger" title="" onclick="pay()"><i class="fa fa-credit-card"></i> <strong>Thanh toán</strong></button>
+                                </div>
+                            </div>
+                            <div class="row mt-20">
+                                <div class="col-md-4">
+                                    <button class="btn btn-success " title="In Hóa Đơn" type="button" onclick="getBill()"><i class="fa fa-print"></i> <strong>In Hóa Đơn</strong></button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-warning " title="In Order" type="button" onclick="getStaffBill()" ><i class="fa fa-sticky-note-o"></i> <strong>In Order</strong></button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-dark" title="In Tem Nhãn" type="button" onclick="getBarcode()" ><i class="fa fa-qrcode"></i> <strong>In Tem Nhãn</strong></button>
+                                </div>
+                            </div>
+
                         </form><!-- /form -->
                     </div><!-- /.cart-totals -->
                 </div>

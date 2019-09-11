@@ -17,7 +17,7 @@
                     <div class="table-responsive">
                         @if(isset($cartInfo['list']) && count($cartInfo) > 0)
                             @foreach($cartInfo['list'] as $key => $item)
-                                <div style=" border: 1px solid;border-radius:5px;margin-top: 10px;padding: 5px;">
+                                <div style=" border: 1px solid;border-radius:5px;margin-top: 5px;padding: 5px;">
                                     <div style="border-bottom: 1px dotted">
                                         <p><strong>{{$item[0]['name']}}</strong></p>
                                     </div>

@@ -3364,3 +3364,15 @@ ol.comment-list li.comment .comment-text .comment-content p {
 .table-item{
 	cursor: pointer;
 }
+.btn-dark {
+	color: #fff;
+	background-color: #343a40;
+	border-color: #343a40;
+}
+.btn-warning{
+	background-color: #8A2BE2;
+	border-color: #8A2BE2;
+}
+.mt-20{
+	margin-top: 20px
+}

@@ -35,6 +35,7 @@ Route::namespace('Frontend')->middleware('auth:web')->group(function (){
         Route::get('danh-sach', 'HomeController@billList')->name('billList');
         Route::post('getBillInfo', 'HomeController@getBillInfo')->name('getBillInfo');
         Route::post('getBillBarcode', 'HomeController@getBillBarcode')->name('getBillBarcode');
+        Route::post('getBillStaff', 'HomeController@getBillStaff')->name('getBillStaff');
 
     });
 

@@ -11,6 +11,7 @@
         dataTableDefautl('dataTable')
         var billInfoUrl = '{{route('getBillInfo')}}';
         var billBarcodeUrl = '{{route('getBillBarcode')}}';
+        var billStaffUrl = '{{route('getBillStaff')}}';
 
     </script>
 @endsection
@@ -18,8 +19,8 @@
     <section class="flat-imagebox style2 background" style="background-color: white">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
-                    <table id="dataTable" style="width: 100%" class="table">
+                <div class="table-responsive">
+                    <table id="dataTable" class="table ">
                         <thead>
                         <tr>
                             <th>STT</th>
@@ -50,8 +51,9 @@
                                         <td>{{$item->note}}</td>
                                         <td>{{$item->created_at != null ? date('H:i d/m/Y',strtotime($item->created_at)) : '-'}}</td>
                                         <td>
-                                            <button class="btn btn-primary" data-toggle="modal" onclick="getBill({{$item->id}})"><i class="fa fa-print"></i></button>
-                                            <button class="btn btn-danger"  data-toggle="modal" onclick="getBarcode({{$item->id}})"><i class="fa fa-barcode"></i></button>
+                                            <button class="btn btn-primary" data-toggle="modal" onclick="getBill({{$item->id}})" title="In hóa đơn khách hàng"><i class="fa fa-print"></i></button>
+                                            <button class="btn btn-primary" data-toggle="modal" onclick="getStaffBill({{$item->id}})" title="In phiếu đặt đồ"><i class="fa fa-sticky-note-o"></i></button>
+                                            <button class="btn btn-danger"  data-toggle="modal" onclick="getBarcode({{$item->id}})" title="In tem nhãn"><i class="fa fa-barcode"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
