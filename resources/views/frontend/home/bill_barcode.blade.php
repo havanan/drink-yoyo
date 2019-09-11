@@ -20,21 +20,16 @@
                                 @if($item[0]['qty'] > 1)
                                     @for($i= 1;$i <= $item[0]['qty'];$i++)
                                         <div style="margin-top: 5px;padding: 5px;">
-                                            <div style="border-bottom: 1px dotted">
-                                                <span><strong>{{$item[0]['name']}}</strong></span>
-                                                <span style="float: right"><strong>HĐ #{{$billInfo['id']}}</strong></span>
-                                            </div>
-                                            <span><strong>{{number_format($item[0]['price'])}} VNĐ</strong></span>
+                                             <span><strong>{{$item[0]['name']}}</strong></span>
+                                                <p><strong>HĐ #{{$billInfo['id']}}</strong></p>
+                                                <span><strong>{{number_format($item[0]['price'])}} VNĐ</strong></span>
                                         </div>
                                     @endfor
                                 @else
-                                    <div style=" border: 1px solid;border-radius:5px;margin-top: 5px;padding: 5px;">
-                                        <div style="border-bottom: 1px dotted">
-                                            <span><strong>{{$item[0]['name']}}</strong></span>
-                                            <span style="float: right"><strong>HĐ #{{$billInfo['id']}}</strong></span>
-
-                                        </div>
-                                        <span><strong>{{number_format($item[0]['price'])}} VNĐ</strong></span>
+                                    <div style="margin-top: 5px;padding: 5px;">
+                                         <span><strong>{{$item[0]['name']}}</strong></span>
+                                            <p><strong>HĐ #{{$billInfo['id']}}</strong></p>
+                                            <span><strong>{{number_format($item[0]['price'])}} VNĐ</strong></span>
                                     </div>
                                 @endif
                             @endforeach
