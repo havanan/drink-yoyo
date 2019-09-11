@@ -9,7 +9,7 @@
         display: inline-block;
     }
 </style>
-<div class="container body-bill" id="billPrint" style="  width: 200px; margin: 0 auto;height: 600px;">
+<div class="container body-bill" id="billPrint">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -17,13 +17,26 @@
                     <div class="table-responsive">
                         @if(isset($cartInfo['list']) && count($cartInfo) > 0)
                             @foreach($cartInfo['list'] as $key => $item)
-                                <div style=" border: 1px solid;border-radius:5px;margin-top: 5px;padding: 5px;">
-                                    <div style="border-bottom: 1px dotted">
-                                        <p><strong>{{$item[0]['name']}}</strong></p>
+                                @if($item[0]['qty'] > 1)
+                                    @for($i= 1;$i <= $item[0]['qty'];$i++)
+                                        <div style="margin-top: 5px;padding: 5px;">
+                                            <div style="border-bottom: 1px dotted">
+                                                <span><strong>{{$item[0]['name']}}</strong></span>
+                                                <span style="float: right"><strong>HĐ #{{$billInfo['id']}}</strong></span>
+                                            </div>
+                                            <span><strong>{{number_format($item[0]['price'])}} VNĐ</strong></span>
+                                        </div>
+                                    @endfor
+                                @else
+                                    <div style=" border: 1px solid;border-radius:5px;margin-top: 5px;padding: 5px;">
+                                        <div style="border-bottom: 1px dotted">
+                                            <span><strong>{{$item[0]['name']}}</strong></span>
+                                            <span style="float: right"><strong>HĐ #{{$billInfo['id']}}</strong></span>
+
+                                        </div>
+                                        <span><strong>{{number_format($item[0]['price'])}} VNĐ</strong></span>
                                     </div>
-                                    <h5 style="margin-top: 10px"><strong>HĐ #{{$billInfo['id']}}</strong></h5>
-                                    <p><strong>{{number_format($item[0]['price'])}} VNĐ</strong></p>
-                                </div>
+                                @endif
                             @endforeach
                         @endif
 

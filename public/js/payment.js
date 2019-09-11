@@ -38,6 +38,10 @@ function pay() {
         swal("Cảnh Báo !", "Chưa nhập tên khách hàng!", "warning");
         return false;
     }
+    if (data.table_number == ''){
+        swal("Cảnh Báo !", "Chưa nhập số bàn!", "warning");
+        return false;
+    }
     $.ajax({
         type:'POST',
         url:payUrl,
@@ -55,6 +59,7 @@ function pay() {
                 return false;
             }else {
                 swal("Thanh Toán Thành Công !", "Vui lòng in hóa đơn trả khách !", "success");
+                return false;
             }
         },
         error:function (e) {

@@ -68,7 +68,6 @@ class CartController extends Controller
             $billInfo = Bill::create($formData);
             DB::commit();
             session(['last_bill_id' => $billInfo['id']]);
-
             return 'true';
         } catch (\Exception $e) {
             DB::rollback();
