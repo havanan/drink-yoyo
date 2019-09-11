@@ -46,7 +46,7 @@
                                                                             <div class="imagebox style2">
                                                                                 <div class="box-image">
                                                                                     <a href="#" title="{{$product->name}}">
-                                                                                        <img src="{{asset('/').$product->avatar}}" alt="{{$product->name}}" class="img-item">
+                                                                                        <img src="{{asset($product->avatar)}}" alt="{{$product->name}}" class="img-item">
                                                                                     </a>
                                                                                 </div><!-- /.box-image -->
                                                                                 <div class="box-content">

@@ -53,7 +53,7 @@
                                 <input id="thumbnail" class="form-control hidden" type="text" name="avatar" value="{{$data['avatar']}}" >
                             </div>
 
-                            <img id="holder" class="image-preview" src="{{$data['avatar'] != null ? asset('/').$data['avatar'] : asset('img/no_image.png')}}">
+                            <img id="holder" class="image-preview" src="{{$data['avatar'] != null ? asset($data['avatar']) : asset('img/no_image.png')}}">
 
                         </div>
                         <div class="col-md-8">
@@ -156,8 +156,9 @@
                             <div class="row">
                                 <div class="col-md-12 text-right">
                                     <div class="form-group">
-                                        <button class="btn btn-info mr-3" type="submit">Sửa</button>
                                         <button class="btn btn-danger mr-3" type="reset">Nhập lại</button>
+                                        <button class="btn btn-info mr-3" type="submit">Sửa</button>
+
                                     </div>
                                 </div>
                             </div>

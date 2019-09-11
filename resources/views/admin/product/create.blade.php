@@ -154,8 +154,9 @@
                             <div class="row">
                                 <div class="col-md-12 text-right">
                                     <div class="form-group">
-                                        <button class="btn btn-info mr-3" type="submit">Tạo</button>
                                         <button class="btn btn-danger mr-3" type="reset">Nhập lại</button>
+                                        <button class="btn btn-info mr-3" type="submit">Tạo</button>
+
                                     </div>
                                 </div>
                             </div>

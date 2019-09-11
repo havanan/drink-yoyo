@@ -2,7 +2,7 @@
     @foreach($data as $key => $item)
         <tr>
             <td>{{$key+1}}</td>
-            <td> <img src="{{$item->avatar != null ? asset('/').$item->avatar : ''}}" width="50px">
+            <td> <img src="{{$item->avatar != null ? asset($item->avatar) : ''}}" width="50px">
                 {{$item->name}}</td>
             <td>{{number_format($item->current_price)}}</td>
             <td>{{number_format($item->price)}}</td>
