@@ -18,7 +18,7 @@
     <script>
         var urlDelete = '{{route('admin.bill.delete')}}';
         var urlList = '{{route('admin.bill.getList')}}';
-        var infoUrl = '{{route('admin.bill.view')}}';
+
     </script>
 @endsection
 @section('content')
@@ -28,19 +28,10 @@
             @include('layouts.notification')
             <div class="card card-box">
                 <div class="card-body" id="tableBody">
-                    @include('admin.bill.table_body')
+                    @include('admin.bill.table_deleted_body')
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade bill-body" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content bill-preview" style="height: 950px !important;">
-                <div id="bodyBill"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" data-dismiss="modal"> Đóng</button>
-            </div>
-        </div>
-    </div>
+
 @endsection

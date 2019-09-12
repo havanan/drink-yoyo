@@ -53,10 +53,25 @@
                         {{--</li>--}}
                     </ul>
                 </li>
-                <li class="nav-item  ">
-                    <a href="{{route('admin.bill.index')}}" class="nav-link nav-toggle"> <i class="material-icons">assignment_turned_in</i>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">assignment_turned_in</i>
                         <span class="title">Hóa đơn</span>
+                        <span class="arrow"></span>
+                        {{--                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>--}}
                     </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item ">
+                            <a href="{{route('admin.bill.index')}}" class="nav-link ">
+                                <span class="title">Danh Sách</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('admin.bill.deleted')}}" class="nav-link ">
+                                <span class="title">Đã xóa</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 {{--                <li class="nav-item  ">--}}
 {{--                    <a href="#" class="nav-link nav-toggle">--}}

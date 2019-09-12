@@ -96,6 +96,9 @@ function makeDonutChart(name) {
     var ctx = document.getElementById("chartjs_doughnut").getContext("2d");
     window.myDoughnut = new Chart(ctx, config);
 }
+function getTextInputVal(id) {
+    return $('#'+id).val();
+}
 function makeLineChart(name,data) {
     if (name == null){
         name = '';
@@ -141,12 +144,58 @@ function makeLineChart(name,data) {
     var ctx=document.getElementById("chartjs_line").getContext("2d");
     window.myLine=new Chart(ctx, config);
 }
+function setNewData(id,data) {
+    $('#'+id).html(data);
+}
+function hideItem(id) {
+    setTimeout(function(){
+
+        $('#'+id).addClass('hidden');
+
+    }, 3000);
+
+}
 function activeMenu(url) {
     var loc = '#remove-scroll ul li a[href="' + url + '"]';
     $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
     $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
     $('#remove-scroll ul li a[href="' + url + '"]').parent('li').addClass('active');
 }
-function changePass() {
+function changePass(id) {
+    var old_pass = getTextInputVal('oldPass');
+    var new_pass = getTextInputVal('newPass');
+
+    $.ajax({
+        type:'Post',
+        url:chagePassUrl,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            old_pass:old_pass,
+            new_pass:new_pass,
+            user_id:id
+        },
+        success:function(data) {
+            if (data != null){
+                if (data.code == '1' || data.code == '2') {
+                    var idTex = 'id-'+data.code;
+                    setNewData(idTex,data.message);
+                    hideItem(idTex)
+                }
+                if (data.code == '0' || data.code == '3' || data.code == '4'){
+                    var idTex = 'bigMessage';
+                    setNewData(idTex,data.message);
+                    hideItem(idTex)
+                }
+            }else {
+                swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+
+            }
+        },
+        error:function () {
+            swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+        },
+    });
 
 }

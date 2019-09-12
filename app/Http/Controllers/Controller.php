@@ -92,4 +92,14 @@ class Controller extends BaseController
         }
         return ($params[0]/$params[1])*100;
     }
+    function getMessageType($code,$message,$json = false){
+        $data = [
+            'code' => $code,
+            'message' => $message
+        ];
+        if ($json == true){
+            $data = json_encode($data);
+        }
+        return $data;
+    }
 }

@@ -14,7 +14,15 @@ class BillController extends Controller
         $data = $this->getListData();
         return view('admin.bill.index',compact('data'));
     }
+    public function deleted(){
+        $data = $this->getDeleteList();
+        return view('admin.bill.deleted',compact('data'));
+    }
     public function getListData(){
+        $data = Bill::orderBy('id','desc')->get();
+        return $data;
+    }
+    public function getDeleteList(){
         $data = Bill::withTrashed()->orderBy('id','desc')->get();
         return $data;
     }
@@ -35,5 +43,14 @@ class BillController extends Controller
                 return 'true';
             }
         }
+    }
+    public function view(Request $request){
+        $id = $request->get('id');
+        $billInfo = Bill::find($id);
+        if ($billInfo == null){
+            return 'false';
+        }
+        $cartInfo =json_decode($billInfo['content'],true);
+        return view('admin.bill.bill_info',compact('cartInfo','billInfo'));
     }
 }

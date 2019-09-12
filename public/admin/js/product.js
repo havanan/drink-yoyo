@@ -45,6 +45,31 @@ function btnDelete(id) {
             }
         });
 }
+function btnView(id) {
+    $.ajax({
+        type:'POST',
+        url:infoUrl,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            id:id,
+        },
+        success:function(data) {
+            if (data === 'false'){
+                swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+                return false;
+            }else {
+                $('#bodyBill').html(data);
+                $('.bill-body').modal('show');
+            }
+        },
+        error:function (e) {
+            swal(" Lỗi !", "Không lấy được thông tin bill !", "error");
+            return false;
+        }
+    });
+}
 function reFreshTable() {
     $.ajax({
         type:'GET',

@@ -10,8 +10,8 @@
         <th>Giá cuối</th>
         <th>Mô tả</th>
         <th>Tạo lúc</th>
-        <th>Action</th>
-
+        <th>Xóa lúc</th>
+        <th>Người xóa</th>
     </tr>
     </thead>
     <tbody>
@@ -27,14 +27,12 @@
                 <td>{{number_format($item->price_final)}}</td>
                 <td>{{$item->note}}</td>
                 <td>{{$item->created_at != null ? date('H:i d/m/Y',strtotime($item->created_at)) : '-'}}</td>
-                <td>
-                    {{--<button class="btn btn-primary"  ><i class="fa fa-print"></i></button>--}}
-                    <button class="btn btn-primary" onclick="btnView({{$item->id}})"><i class="fa fa-sticky-note-o"></i></button>
-                    <button class="btn btn-danger" onclick="btnDelete({{$item->id}})"><i class="fa fa-trash-o"></i></button>
-                </td>
+                <td>{{$item->deleted_at != null ? date('H:i d/m/Y',strtotime($item->deleted_at)) : '-'}}</td>
+                <td>{{$item->getDeletedUser != null ? $item->getDeletedUser->name : ''}}</td>
             </tr>
         @endforeach
     @endif
+
     </tbody>
 </table>
 <script>

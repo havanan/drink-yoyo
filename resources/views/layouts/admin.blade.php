@@ -47,6 +47,9 @@
     <script src="{{asset('admin/assets/theme-color.js')}}" ></script>
     <!-- material -->
     <script src="{{asset('admin/assets/material/material.min.js')}}"></script>
+    <script>
+        var chagePassUrl = '{{'admin.user.changePass'}}';
+    </script>
     <script src="{{asset('admin/js/home.js')}}" ></script>
     @yield('js-top')
 </head>
@@ -320,25 +323,33 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLongTitle">Đổi Mật Khẩu</h4>
+                    <h4 id="bigMessage" class=""></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <form>
                         <div class="form-group">
                             <label for="simpleFormEmail">Mật khẩu cũ</label>
-                            <input type="password" class="form-control" id="oldPass" placeholder="Mật khẩu hiện tại">
+                            <input type="password" class="form-control" id="oldPass" placeholder="Mật khẩu hiện tại" name="old_pass" required>
+                            <label class="text-danger">
+                                <span id="id-1"></span>
+                            </label>
                         </div>
                         <div class="form-group">
                             <label for="simpleFormPassword">Mật khẩu mới</label>
-                            <input type="password" class="form-control" id="newPass" placeholder="Mật khẩu mới">
+                            <input type="password" class="form-control" id="newPass" placeholder="Mật khẩu mới" name="new_pass" required>
+                            <label class="text-danger">
+                                <span id="id-2"></span>
+                            </label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" onclick="changePass()">Lưu thay đổi</button>
+                    <button type="button" class="btn btn-primary" onclick="changePass({{\Illuminate\Support\Facades\Auth::user()->id}})">Lưu thay đổi</button>
                 </div>
             </div>
         </div>
@@ -357,7 +368,7 @@
 
 <script type="text/javascript" src="{{asset('admin/assets/sweet-alert/sweetalert.min.js')}}"></script>
 <script type="text/javascript">
-    var url = '{{url()->current()}}'
+    var url = '{{url()->current()}}';
     activeMenu(url);
 </script>
 @yield('js')
