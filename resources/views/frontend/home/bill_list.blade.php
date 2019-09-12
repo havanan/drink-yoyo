@@ -24,7 +24,6 @@
                         <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên khách</th>
                             <th>Bàn</th>
                             <th>Người bán</th>
                             <th>Số lượng</th>
@@ -41,7 +40,6 @@
                                 @foreach($data as $key => $item)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$item->customer_name}}</td>
                                         <td>{{$item->table_number}}</td>
                                         <td>{{$item->getStaff != null ? $item->getStaff->name : ''}}</td>
                                         <td>{{$item->total}}</td>

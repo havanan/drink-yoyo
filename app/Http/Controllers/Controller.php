@@ -87,6 +87,9 @@ class Controller extends BaseController
         return $data;
     }
     public function getPercent($params){
-        return ($params[1]/$params[0])*100;
+        if ($params[0] == 0) {
+           return 0;
+        }
+        return ($params[0]/$params[1])*100;
     }
 }
