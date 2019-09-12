@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function() {
 
         Route::prefix('user')->group(function(){
             Route::get('pro-file', 'UserController@profile')->name('admin.user.profile');
+            Route::get('change-pass', 'UserController@changePass')->name('admin.user.changePass');
 
         });
         Route::prefix('ban-hang')->group(function(){

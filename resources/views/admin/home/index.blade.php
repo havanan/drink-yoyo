@@ -12,7 +12,6 @@
     <!-- chart js -->
     <script src="{{asset('admin/assets/chart-js/Chart.bundle.js')}}" ></script>
     <script src="{{asset('admin/assets/chart-js/utils.js')}}" ></script>
-    <script src="{{asset('admin/js/home.js')}}" ></script>
     <script>
         var urlList = '{{route('admin.dashboard.findData')}}';
         var data_db =<?php echo $chartBillMonth ?>;

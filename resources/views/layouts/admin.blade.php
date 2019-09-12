@@ -28,6 +28,7 @@
     <link href="{{asset('admin')}}/css/plugins.min.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('admin/css/formlayout.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/css/theme-color.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/sweet-alert/sweetalert.min.css')}}">
     <!-- favicon -->
@@ -46,6 +47,7 @@
     <script src="{{asset('admin/assets/theme-color.js')}}" ></script>
     <!-- material -->
     <script src="{{asset('admin/assets/material/material.min.js')}}"></script>
+    <script src="{{asset('admin/js/home.js')}}" ></script>
     @yield('js-top')
 </head>
 <!-- END HEAD -->
@@ -251,8 +253,8 @@
                                     <i class="icon-user"></i> Profile </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="icon-settings"></i> Settings
+                                <a href="#" data-toggle="modal" data-target="#changePassModalCenter">
+                                    <i class="icon-settings"></i> Đổi mật khẩu
                                 </a>
                             </li>
                             <li>
@@ -311,10 +313,40 @@
         <!-- end chat sidebar -->
     </div>
     <!-- end page container -->
+
+    <!--start change pass modal -->
+    <div class="modal fade" id="changePassModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">Đổi Mật Khẩu</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="simpleFormEmail">Mật khẩu cũ</label>
+                            <input type="password" class="form-control" id="oldPass" placeholder="Mật khẩu hiện tại">
+                        </div>
+                        <div class="form-group">
+                            <label for="simpleFormPassword">Mật khẩu mới</label>
+                            <input type="password" class="form-control" id="newPass" placeholder="Mật khẩu mới">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="changePass()">Lưu thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end change pass modal -->
     <!-- start footer -->
     <div class="page-footer">
         <div class="page-footer-inner"> 2019 &copy; Trà chanh YoYo - 72 Núi Vàng - Phường Trung Sơn - 035 337 3135
-{{--            <a href="mailto:redstartheme@gmail.com" target="_top" class="makerCss">AHV</a>--}}
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
@@ -326,10 +358,7 @@
 <script type="text/javascript" src="{{asset('admin/assets/sweet-alert/sweetalert.min.js')}}"></script>
 <script type="text/javascript">
     var url = '{{url()->current()}}'
-    var loc = '#remove-scroll ul li a[href="' + url + '"]';
-    $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
-    $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
-    $('#remove-scroll ul li a[href="' + url + '"]').parent('li').addClass('active');
+    activeMenu(url);
 </script>
 @yield('js')
 </body>
