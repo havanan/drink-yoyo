@@ -141,3 +141,12 @@ function makeLineChart(name,data) {
     var ctx=document.getElementById("chartjs_line").getContext("2d");
     window.myLine=new Chart(ctx, config);
 }
+function activeMenu(url) {
+    var loc = '#remove-scroll ul li a[href="' + url + '"]';
+    $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
+    $('#remove-scroll ul li a[href="' + url + '"]').parent().parent().parent().addClass('active');
+    $('#remove-scroll ul li a[href="' + url + '"]').parent('li').addClass('active');
+}
+function changePass() {
+
+}
