@@ -54,6 +54,7 @@ function reFreshTable() {
         },
         success:function(data) {
             if (data != null){
+                console.log(data);
                 $('#tableBody').html(data);
             }else {
                 swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");

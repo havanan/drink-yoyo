@@ -11,12 +11,16 @@ class BillController extends Controller
 {
 
     public function index(){
-        $data = $this->getList();
+        $data = $this->getListData();
         return view('admin.bill.index',compact('data'));
     }
-    public function getList(){
+    public function getListData(){
         $data = Bill::withTrashed()->orderBy('id','desc')->get();
         return $data;
+    }
+    public function getList(){
+        $data = $this->getListData();
+        return view('admin.bill.table_body',compact('data'));
     }
     public function delete(Request $request){
         $id = $request->get('id');

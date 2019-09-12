@@ -18,9 +18,9 @@ class HomeController extends Controller
         return view('frontend.home.index',compact('cartInfo','product_types'));
     }
     public function billList(){
-//        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-//        whereDay('created_at', '=', $today)->
-        $data = Bill::orderBy('id','desc')->get();
+        $today = Carbon::now()->format('Y-m-d');
+//        $today = '2019-09-11';
+        $data = Bill::orderBy('id','desc')->whereDate('created_at',$today)->get();
         return view('frontend.home.bill_list',compact('data'));
     }
     public function getBillInfo(Request $request){

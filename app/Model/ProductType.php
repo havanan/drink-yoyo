@@ -31,6 +31,6 @@ class ProductType extends Model implements LogsActivityInterface
     }
     protected $hidden=['getAllProduct'];
     public function getAllProduct(){
-        return $this->hasMany(Product::class,'type_id','id')->where('status',1);
+        return $this->hasMany(Product::class,'type_id','id')->where('status',1)->orderBy('id','desc');
     }
 }

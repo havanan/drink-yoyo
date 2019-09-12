@@ -86,7 +86,7 @@
                             <a href="{{route('home')}}" title="">Bán Hàng</a>
                         </div><!-- /.today-deal -->
                         <div class="today-deal">
-                            <a href="{{route('billList')}}" title="">Danh Sách Bill</a>
+                            <a href="{{route('billList')}}" title="">Bill Trong Ngày </a>
                         </div><!-- /.today-deal -->
                         <div class="btn-menu">
                             <span></span>

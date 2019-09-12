@@ -12,12 +12,12 @@
         var billInfoUrl = '{{route('getBillInfo')}}';
         var billBarcodeUrl = '{{route('getBillBarcode')}}';
         var billStaffUrl = '{{route('getBillStaff')}}';
-
     </script>
 @endsection
 @section('content')
-    <section class="flat-imagebox style2 background" style="background-color: white">
+    <section class="flat-imagebox style2 background" style="background-color: white;padding-top: 20px ">
         <div class="container-fluid">
+            <h4 class="mb-2"><strong>Tổng Đơn: {{count($data)}}</strong></h4>
             <div class="row">
                 <div class="table-responsive">
                     <table id="dataTable" class="table ">
