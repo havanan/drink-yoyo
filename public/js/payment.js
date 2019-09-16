@@ -230,6 +230,9 @@ function getStaffBill(id) {
         }
     });
 }
+function addTopping(id) {
+    console.log(id);
+}
 function getDiscountInput() {
     var disCount = $('#discount').val();
     disCount = parseInt(disCount);

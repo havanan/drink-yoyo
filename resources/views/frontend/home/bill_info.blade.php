@@ -51,7 +51,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -90,14 +89,15 @@
                                 </tbody>
                             </table>
                         </div>
-
                         <div style="margin-top: 5px">
                             <div style="float: left">
+                                <h5>Ghi chú:</h5>
                                 <h4><strong>Khuyến mại: </strong></h4>
                                 <h4><strong>Tổng tiền: </strong></h4>
                                 <h4><strong>Giá thanh toán: </strong></h4>
                             </div>
                             <div style="float: right;text-align: right">
+                                <h5>{{$billInfo['note']}}</h5>
                                 <h4><strong> {{number_format($billInfo['discount'])}} %</strong></h4>
                                 <h4><strong> {{number_format($billInfo['total_money'])}} VNĐ</strong></h4>
                                 <h4><strong> {{number_format($billInfo['price_final'])}} VNĐ</strong></h4>

@@ -75,7 +75,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                         <div style="margin-top: 5px">
                             <span><strong>Ghi chú:</strong></span>
                             {{$billInfo['note']}}

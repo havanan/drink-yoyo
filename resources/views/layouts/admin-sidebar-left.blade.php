@@ -33,7 +33,6 @@
                         <i class="material-icons">redeem</i>
                         <span class="title">Sản Phẩm</span>
                         <span class="arrow"></span>
-{{--                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>--}}
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
@@ -46,11 +45,25 @@
                                 <span class="title">Danh Sách</span>
                             </a>
                         </li>
-                        {{--<li class="nav-item  ">--}}
-                            {{--<a href="email_compose.html" class="nav-link ">--}}
-                                {{--<span class="title">Compose Mail</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">extension</i>
+                        <span class="title">Hàng hóa</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('admin.material.create')}}" class="nav-link ">
+                                <span class="title">Tạo Mới</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="{{route('admin.material.index')}}" class="nav-link ">
+                                <span class="title">Danh Sách</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

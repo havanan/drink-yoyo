@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Bill;
 use App\Model\Table;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -101,5 +102,25 @@ class Controller extends BaseController
             $data = json_encode($data);
         }
         return $data;
+    }
+    public function sendEmail($booking_id){
+        $info = Bill::find($booking_id);
+        $service = $info->service;
+        $customer = $info->customer;
+        $to_name = $customer['name'];
+        $to_email = $customer['email'];
+        if (strlen($service['formula']) <= 0 ){
+            $msg = 1;
+            return $msg;
+        }
+        $data = array('name'=>$to_name, 'body' =>$service['formula']);
+        $subject = 'Công Thức Món Ăn: '.$service['name'];
+        Mail::send('backend.mail.mail', $data, function($message) use ($to_name, $to_email,$subject) {
+            $message->to($to_email, $to_name)
+                ->subject($subject);
+            $message->from('vifun12@gmail.com',env('APP_NAME'));
+        });
+        $msg = 2;
+        return $msg;
     }
 }

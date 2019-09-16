@@ -8,7 +8,7 @@
             <td>{{number_format($item->price)}}</td>
             <td>{{$item->unit}}</td>
             <td>{{$item->amount}}</td>
-            <td>{{$item->weight }}</td>
+            <td>{{$item->getType != null ?  $item->getType->name : '-'}}</td>
             <td>{{$item->note}}</td>
             <td>
                 @if($item->status == 1)
@@ -19,7 +19,7 @@
             </td>
             <td>{{$item->created_at != null ? date('H:i d/m/Y',strtotime($item->created_at)) : '-'}}</td>
             <td>
-                <a href="{{route('admin.material.edit',$item->id)}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                <a href="{{route('admin.product.edit',$item->id)}}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
                 <button class="btn btn-danger" onclick="btnDelete({{$item->id}})"><i class="fa fa-trash-o"></i></button>
             </td>
         </tr>

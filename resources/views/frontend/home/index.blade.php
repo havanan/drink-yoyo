@@ -99,7 +99,7 @@
                                     <button class="btn btn-success "  title="In Hóa Đơn" type="button" onclick="getBill()"><i class="fa fa-print"></i> <strong>In Hóa Đơn</strong></button>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-warning "  title="In Order" type="button" onclick="getStaffBill()" ><i class="fa fa-sticky-note-o"></i> <strong>In Order</strong></button>
+{{--                                    <button class="btn btn-warning "  title="In Order" type="button" onclick="getStaffBill()" ><i class="fa fa-sticky-note-o"></i> <strong>In Order</strong></button>--}}
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-dark"  title="In Tem Nhãn" type="button" onclick="getBarcode()" ><i class="fa fa-qrcode"></i> <strong>In Tem Nhãn</strong></button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Model\Bill;
+use App\Model\BillProduct;
 use App\Model\Product;
 use App\Http\Controllers\Controller;
 use Cart;
@@ -66,12 +67,27 @@ class CartController extends Controller
 
         try {
             $billInfo = Bill::create($formData);
+            $this->importBillProduct($billInfo['id'],$cartInfo['list']);
             DB::commit();
             session(['last_bill_id' => $billInfo['id']]);
             return 'true';
         } catch (\Exception $e) {
             DB::rollback();
             return 'false';
+        }
+    }
+    public function importBillProduct($bill_id,$product_list){
+        if (!empty($product_list)){
+            foreach ($product_list as $key=>$item){
+                $product = $item[0];
+               $input = [
+                 'bill_id' =>$bill_id,
+                   'product_id' =>$product->id,
+                   'qty' => $product->qty,
+                   'price' => $product->price
+               ];
+               BillProduct::create($input);
+            }
         }
     }
     public function destroyCart(){
