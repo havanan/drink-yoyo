@@ -6,32 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\LogsActivity;
 use Spatie\Activitylog\LogsActivityInterface;
 
-class Material extends Model implements LogsActivityInterface
+class Unit extends Model implements LogsActivityInterface
 {
     use LogsActivity;
-    protected $table = 'materials';
     protected static $logAttributes = ['*'];
     protected static $logOnlyDirty = true;
     public function getActivityDescriptionForEvent($eventName)
     {
         if ($eventName == 'created')
         {
-            return 'Material "' . $this->name . '" was created';
+            return 'Unit "' . $this->name . '" was created';
         }
 
         if ($eventName == 'updated')
         {
-            return 'Material "' . $this->name . '" was updated';
+            return 'Unit "' . $this->name . '" was updated';
         }
 
         if ($eventName == 'deleted')
         {
-            return 'Material "' . $this->name . '" was deleted';
+            return 'Unit "' . $this->name . '" was deleted';
         }
         return '';
     }
-    protected $fillable=['weight','name','slug','price','avatar','unit_id','note','status','amount'];
-    public function getUnit(){
-        return $this->hasOne(Unit::class,'id','unit_id');
-    }
+    protected $fillable = ['name','to_kg','status','percent'];
 }

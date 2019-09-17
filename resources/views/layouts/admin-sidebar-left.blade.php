@@ -49,6 +49,26 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">assignment_turned_in</i>
+                        <span class="title">Hóa đơn</span>
+                        <span class="arrow"></span>
+                        {{--                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>--}}
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item ">
+                            <a href="{{route('admin.bill.index')}}" class="nav-link ">
+                                <span class="title">Danh Sách</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('admin.bill.deleted')}}" class="nav-link ">
+                                <span class="title">Đã xóa</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
                         <i class="material-icons">extension</i>
                         <span class="title">Hàng hóa</span>
                         <span class="arrow"></span>
@@ -66,22 +86,56 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item  ">
+                    <a href="#" class="nav-link nav-toggle"> <i class="material-icons text-danger">error_outline</i>
+                        <span class="title text-danger">Chưa Hoàn Thiện</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
-                        <i class="material-icons">assignment_turned_in</i>
-                        <span class="title">Hóa đơn</span>
+                        <i class="material-icons">account_balance</i>
+                        <span class="title">Kho Hàng</span>
                         <span class="arrow"></span>
-                        {{--                        <span class="label label-rouded label-menu deepPink-bgcolor">3</span>--}}
                     </a>
                     <ul class="sub-menu">
-                        <li class="nav-item ">
-                            <a href="{{route('admin.bill.index')}}" class="nav-link ">
-                                <span class="title">Danh Sách</span>
+                        <li class="nav-item  ">
+                            <a href="{{route('admin.warehouse.index')}}" class="nav-link ">
+                                <span class="title">Tình Trạng</span>
                             </a>
                         </li>
                         <li class="nav-item  ">
-                            <a href="{{route('admin.bill.deleted')}}" class="nav-link ">
-                                <span class="title">Đã xóa</span>
+                            <a href="{{route('admin.warehouse.coupon_create')}}" class="nav-link ">
+                                <span class="title">Tạo Phiếu Nhập</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('admin.warehouse.list_imported_coupon')}}" class="nav-link ">
+                                <span class="title">DS Phiếu Nhập</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">settings</i>
+                        <span class="title">Cài Đặt</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item">
+                            <a href="{{route('admin.setting.index')}}" class="nav-link ">
+                                <span class="title">Chung</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.setting.discount')}}" class="nav-link ">
+                                <span class="title">Khuyến Mại</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.setting.email')}}" class="nav-link ">
+                                <span class="title">Gửi Mail</span>
                             </a>
                         </li>
                     </ul>

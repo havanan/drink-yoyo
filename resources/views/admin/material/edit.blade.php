@@ -1,8 +1,8 @@
 @extends('layouts.admin')
-@section('title') Sản phẩm @endsection
+@section('title') Hàng Hóa @endsection
 
 @section('breadcrumb')
-    Sửa sản phẩm
+    Sửa Hàng Hóa
 @endsection
 @section('css')
     <!-- Material Design Lite CSS -->
@@ -18,10 +18,7 @@
     <script src="{{asset('admin/js/product.js')}}"></script>
 
     <script>
-        var categories = '<?php echo json_encode($categories) ?>';
-            categories = JSON.parse(categories);
         var domain = "{{ url(config('lfm.url_prefix')) }}";
-        genSelect2('select2',categories);
         standAloneButton(domain);
     </script>
 @endsection
@@ -29,9 +26,10 @@
     <!-- chart start -->
     <div class="row">
         <div class="container-fluid">
+            @include('admin.material.unit_form')
             <div class="card card-box">
                 <div class="card-head">
-                    <header>Sửa Sản Phẩm</header>
+                    <header>Sửa Hàng Hóa</header>
                     <div class="tools">
                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -40,7 +38,7 @@
                 </div>
                 <div class="card-body no-padding height-9">
                     @include('layouts.notification')
-                    <form method="post" action="{{route('admin.product.update')}}" class="row">
+                    <form method="post" action="{{route('admin.material.update')}}" class="row">
                         @csrf
                         <input type="hidden" name="id" value="{{$data['id']}}">
                         <div class="col-md-4">
@@ -60,17 +58,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" required value="{{$data['name']}}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Loại sản phẩm</label>
-                                        <select class="form-control select2" name="type_id" id="type_id">
-
-                                        </select>
+                                        <input type="text" class="form-control" name="name" placeholder="Tên Hàng Hóa" required value="{{$data['name']}}">
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +70,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="unit" placeholder="Đơn vị" value="{{$data['unit']}}">
+                                        <select class="form-control" name="unit_id">
+                                            @if(count($units) > 0)
+                                                @foreach($units as $key => $item)
+                                                    <option value="{{$item->id}}" @if($data['unit_id'] == $item->id) selected @endif>{{$item->name}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +84,13 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá nhập" name="current_price" value="{{$data['current_price']}}">
+                                        <input type="number" min="0" class="form-control" placeholder="Giá nhập" name="price" value="{{$data['price']}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá bán" name="price" required value="{{$data['price']}}">
+                                        <span class="input-group-addon"><i class="fa fa-database text-dark"></i></span>
+                                        <input type="number" min="0" class="form-control" placeholder="Định lượng" name="weight" value="{{$data['weight']}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -118,29 +112,6 @@
                                             <input type="radio" name="status" id="status_hidden" value="0"  class="form-control" @if($data['status'] == 0) checked @endif>
                                             <label for="status_hidden">
                                                 Ẩn
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="radio">
-                                            <input type="radio" name="type" id="type_show" value="1" class="form-control" @if($data['type'] == 1) checked @endif>
-                                            <label for="type_show">
-                                                Đồ bán trực tiếp
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="radio">
-                                            <input type="radio" name="type" id="type_hidden" value="0"  class="form-control" @if($data['type'] == 0) checked @endif>
-                                            <label for="type_hidden">
-                                                Topping
                                             </label>
                                         </div>
                                     </div>

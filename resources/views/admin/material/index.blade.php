@@ -1,7 +1,7 @@
 @extends('layouts.admin')
-@section('title') Sản phẩm @endsection
+@section('title') Hàng hóa @endsection
 @section('breadcrumb')
-    Danh sách sản phẩm
+    Danh sách hàng hóa
 @endsection
 @section('css')
     <link href="{{asset('admin/assets/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css"/>
@@ -31,12 +31,11 @@
                             <th>STT</th>
                             <th>Tên</th>
                             <th>Giá nhập</th>
+                            <th>Định lượng</th>
                             <th>Đơn vị</th>
-                            <th>Số lượng</th>
-                            <th>Cân nặng</th>
-                            <th>Mô tả</th>
                             <th>Trạng thái</th>
                             <th>Tạo lúc</th>
+                            <th>Mô tả</th>
                             <th>Action</th>
                         </tr>
                         </thead>

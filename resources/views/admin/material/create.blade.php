@@ -1,6 +1,9 @@
 @extends('layouts.admin')
+@section('title')
+    Tạo hàng hóa
+@endsection
 @section('breadcrumb')
-    Tạo sản phẩm
+    Tạo hàng hóa
 @endsection
 @section('css')
     <!-- Material Design Lite CSS -->
@@ -16,11 +19,7 @@
     <script src="{{asset('admin/js/product.js')}}"></script>
 
     <script>
-        var categories = '<?php echo json_encode($categories) ?>';
-            categories = JSON.parse(categories);
         var domain = "{{ url(config('lfm.url_prefix')) }}";
-
-        genSelect2('select2',categories);
         standAloneButton(domain);
     </script>
 @endsection
@@ -28,9 +27,10 @@
     <!-- chart start -->
     <div class="row">
         <div class="container-fluid">
+            @include('admin.material.unit_form')
             <div class="card card-box">
                 <div class="card-head">
-                    <header>Tạo Sản Phẩm Mới</header>
+                    <header>Tạo Hàng Hóa</header>
                     <div class="tools">
                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -38,8 +38,8 @@
                     </div>
                 </div>
                 <div class="card-body no-padding height-9">
-
-                    <form method="post" action="{{route('admin.product.insert')}}" class="row">
+                    @include('layouts.notification')
+                    <form method="post" action="{{route('admin.material.insert')}}" class="row">
                         @csrf
                         <div class="col-md-4">
                             <div class="input-group">
@@ -58,17 +58,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Tên sản phẩm" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Loại sản phẩm</label>
-                                        <select class="form-control select2" name="type_id" id="type_id">
-
-                                        </select>
+                                        <input type="text" class="form-control" name="name" placeholder="Tên hàng hóa" required>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +70,13 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="unit" placeholder="Đơn vị" value="cốc">
+                                        <select class="form-control" name="unit_id">
+                                            @if(count($units) > 0)
+                                                @foreach($units as $key => $item)
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -88,13 +84,13 @@
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá nhập" name="current_price">
+                                        <input type="number" min="0" class="form-control" placeholder="Giá nhập" name="price" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
-                                        <span class="input-group-addon">$</span>
-                                        <input type="number" min="0" class="form-control" placeholder="Giá bán" name="price" required value="10000">
+                                        <span class="input-group-addon"><i class="fa fa-database text-dark"></i></span>
+                                        <input type="number" min="0" class="form-control" placeholder="Định lượng" name="weight" required>
                                     </div>
                                 </div>
                             </div>
@@ -122,29 +118,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="radio">
-                                            <input type="radio" name="type" id="type_show" value="1" checked class="form-control">
-                                            <label for="type_show">
-                                                Đồ bán trực tiếp
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <div class="radio">
-                                            <input type="radio" name="type" id="type_hidden" value="0"  class="form-control">
-                                            <label for="type_hidden">
-                                                Topping
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <textarea class="form-control" name="note" placeholder="Ghi chú"></textarea>
@@ -156,7 +129,6 @@
                                     <div class="form-group">
                                         <button class="btn btn-danger mr-3" type="reset">Nhập lại</button>
                                         <button class="btn btn-info mr-3" type="submit">Tạo</button>
-
                                     </div>
                                 </div>
                             </div>

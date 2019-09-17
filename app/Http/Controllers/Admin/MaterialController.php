@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\Common;
-use App\Http\Requests\RequestProductCreate;
+use App\Http\Requests\RequestMaterialCreate;
+use App\Http\Requests\RequestMaterialUpdate;
 use App\Http\Requests\RequestProductUpdate;
+use App\Http\Requests\RequestUnitCreate;
 use App\Model\Material;
-use App\Model\Product;
 use App\Model\ProductCategory;
 use App\Model\ProductType;
+use App\Model\Unit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class MaterialController extends Controller
@@ -25,57 +25,23 @@ class MaterialController extends Controller
         return Material::orderBy('id','desc')->get();
     }
     public function create(){
-        $categories_data = ProductCategory::where('status',1)->get();
-        $categories = $this->genProductTypesData($categories_data);
-        return view('admin.material.create',compact('categories'));
+        $units = $this->getUnit();
+        return view('admin.material.create',compact('units'));
 
+    }
+    public function getUnit(){
+        $units = Unit::where('status',1)->orderBy('id','desc')->get();
+        return $units;
     }
     public function findProductTypes($categories_id){
         $types = ProductType::where('status',1)->where('category_id',$categories_id)->selectRaw('name as text,id')->get();
         return $types;
     }
-    public function genProductTypesData($categories_data,$selected = false){
-        $gr = [];
-        $i = 0;
-        foreach ($categories_data as  $item){
-
-            if ($item->getAllType != null && count($item->getAllType ) > 0){
-
-                $grType = $this->getType($item->getAllType,$selected);
-
-                $gr[$i] = [
-                    'text' => $item->name,
-                    'children' => $grType
-                ];
-                $i++;
-            }
-        }
-        return $gr;
-    }
-    public function getType($allType,$selected = false){
-        $grType = [];
-        $i = 0;
-        foreach ($allType as $key => $item){
-
-            $grType[$i] = [
-
-                'id' => $item->id,
-
-                'text' => $item->name,
-
-            ];
-            if ($selected && $selected == $item->id){
-                $grType[$i]['selected'] = true;
-            }
-
-            $i++;
-        }
-        return $grType;
-    }
-    public function insert(RequestProductCreate $request){
+    public function insert(RequestMaterialCreate $request){
        $params = $request->all();
        $params['slug'] = Str::slug($params['name']);
        unset($params['_token']);
+
        $create = Material::create($params);
 
        if ($create){
@@ -98,16 +64,15 @@ class MaterialController extends Controller
     }
     public function getList(){
         $data = $this->getMaterialList();
+
         return view('admin.material.table_body',compact('data'));
     }
     public function edit($id){
         $data = Material::findOrFail($id);
-        $categories_data = ProductCategory::where('status',1)->get();
-        $selected = $data['type_id'];
-        $categories = $this->genProductTypesData($categories_data,$selected);
-        return view('admin.material.edit',compact('data','categories'));
+        $units = $this->getUnit();
+        return view('admin.material.edit',compact('data','units'));
     }
-    public function update(RequestProductUpdate $request){
+    public function update(RequestMaterialUpdate $request){
         $params = $request->all();
         $id = $params['id'];
         $info = Material::findOrFail($id);
@@ -120,6 +85,17 @@ class MaterialController extends Controller
         }
         else{
             return  back()->with('errors','Sửa hàng hóa thất bại');
+        }
+    }
+    public function unitCreate(RequestUnitCreate $request){
+        $params = $request->only('name','percent');
+        $create = Unit::create($params);
+        if ($create){
+            return back()->with('success','Tạo đơn vị thành công');
+
+        }else{
+            return back()->with('errors','Tạo đơn vị thất bại');
+
         }
     }
 
