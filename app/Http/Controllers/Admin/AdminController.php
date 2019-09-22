@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\Admin;
 use App\Model\Bill;
+use App\Model\DateLog;
 use App\Model\Product;
 use App\Model\ProductType;
 use App\Model\User;
@@ -15,6 +17,7 @@ class AdminController extends Controller
 {
 
     public function index(){
+
         $params=[
             'date' => Carbon::now()->format('Y-m-d'),
             'time_type' =>'today'
@@ -23,6 +26,8 @@ class AdminController extends Controller
         $data = $this->getDataDashBoard($params);
         $chartBillMonth = $this->getLineChart(['month' => $month]);
         $chartBillMonth = json_encode($chartBillMonth);
+        $admin = Admin::select('name','email')->get()->toArray();
+        $this->sendReport($admin,10);
         return view('admin.home.index',compact('data','chartBillMonth'));
     }
     public function getTotalDrink(){
@@ -30,7 +35,6 @@ class AdminController extends Controller
 
         return Product::whereIn('type_id',$grTypeDrink)->where('status',1)->count();
     }
-
     public function getDataDashBoard($params){
         $data = array();
         $totalBill = $this->getTotalBill($params);
@@ -148,6 +152,69 @@ class AdminController extends Controller
         $chart['labels'] = $labels;
         $chart['data'] = $data;
         return $chart;
+    }
+    public function getOldDate($number){
+        $date = array();
+        $key = 0;
+        for ($i=1;$i<=$number;$i++){
+            $date[$key] = Carbon::now()->subDay($i)->format('Y-m-d');
+            $key++;
+        }
+        return $date;
+    }
+    public function getBillByDate(array $dates){
+        $data = array();
+        foreach ($dates as $key=>$item){
+            $params['date'] = $item;
+            $data[$key] = $this->getTotalBillDB($params)->toArray();
+            $data[$key]['date'] = $item;
+        }
+        return $data;
+    }
+    public function getNotSendData($num_date,$email){
+
+        $date = $this->getOldDate($num_date);
+        $sended_date = DateLog::whereIn('date',$date)->where('email',$email)->where('is_send',1)->distinct('date')->orderBy('date','desc')->pluck('date')->toArray();
+
+        if (count($sended_date) > 0){
+           $not_send = array_diff($date,$sended_date);
+           $not_send = array_values($not_send);
+        }else{
+            $not_send = $date;
+        }
+        $data = $this->getBillByDate($not_send);
+        return $data;
+
+    }
+    public function makeEmailData($user,$num_date,$emails){
+        $data = array();
+        $not_send_data = $this->getNotSendData($num_date,$emails);
+        $data['receiver'] =$user;
+        $data['data'] = $not_send_data;
+        return $data;
+    }
+    public function sendReport($users,$num_date){
+        $f_date = Carbon::now()->subDay($num_date)->format('d/m/Y');
+        $t_date = Carbon::now()->subDay(1)->format('d/m/Y');
+        $subject = 'Báo cáo doanh thu từ ngày: '.$f_date.' đến '.$t_date;
+        if (count($users)>0){
+            foreach ($users as $key=>$item){
+                $email = $item['email'];
+                $params = [
+                    'email' =>$email ,
+                    'date' => Carbon::now()->subDay()->format('Y-m-d'),
+                    'is_send' => 1
+                ];
+                $data[$key] =  $this->makeEmailData($item,$num_date,$email);
+                $data[$key]['subject'] = $subject;
+                $this->sendEmail($data[$key]);
+                $this->insertLog($params);
+            }
+        }
+
+    }
+    public function insertLog($params){
+        DateLog::create($params);
     }
 
 }

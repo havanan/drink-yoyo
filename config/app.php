@@ -180,6 +180,7 @@ return [
 
          UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
          Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -235,6 +236,7 @@ return [
         'Activity' => Spatie\Activitylog\ActivitylogFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
