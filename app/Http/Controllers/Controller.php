@@ -102,18 +102,14 @@ class Controller extends BaseController
         }
         return $data;
     }
-    public function sendEmail($data_config){
-        $subject = isset($data_config['subject']) ? $data_config['subject']: 'báo cáo';
-        $to_name = $data_config['receiver']['name'];
-        $to_email = $data_config['receiver']['email'];
-
-
-        $data = array('name'=>$data_config['receiver']['name'], 'body' =>$data_config['data']);
-        Mail::send('mail.mail', $data, function($message) use ($to_name, $to_email,$subject) {
-            $message->to($to_email, $to_name)
-                ->subject($subject);
-            $message->from('vifun12@gmail.com',env('APP_NAME'));
-        });
-        return true;
+    public function getOldDate($number){
+        $date = array();
+        $key = 0;
+        for ($i=1;$i<=$number;$i++){
+            $date[$key] = Carbon::now()->subDay($i)->format('Y-m-d');
+            $key++;
+        }
+        return $date;
     }
+
 }

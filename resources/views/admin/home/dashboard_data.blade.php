@@ -108,7 +108,7 @@
                                 @foreach($data['billData'] as $key => $item)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{$item->getStaff != null ? $item->getStaff->name : ''}}</td>
+                                        <td>{{$item->staff_name != null ? $item->staff_name : ''}}</td>
                                         <td>{{$item->table_number}}</td>
                                         <td>{{$item->total}}</td>
                                         <td>{{number_format($item->total_money)}}</td>

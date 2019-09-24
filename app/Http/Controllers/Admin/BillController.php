@@ -4,14 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Model\Bill;
 use App\Http\Controllers\Controller;
+use App\Repositories\Bill\BillEloquentRepository;
+use App\Repositories\Email\EmailEloquentRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BillController extends Controller
 {
+    private $bill;
+    public function __construct(EmailEloquentRepository $email,BillEloquentRepository $bill)
+    {
+        $this->email = $email;
+        $this->bill = $bill;
+    }
+
 
     public function index(){
-        $data = $this->getListData();
+        $data = $this->bill->getBillData();
         return view('admin.bill.index',compact('data'));
     }
     public function deleted(){

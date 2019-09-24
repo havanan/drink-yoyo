@@ -29,7 +29,7 @@ class DateLog extends Model implements LogsActivityInterface
         }
         return '';
     }
-    protected $fillable=['is_send','email','date'];
+    protected $fillable=['is_send','email','date','content'];
 
 
 }
