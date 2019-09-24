@@ -17,26 +17,17 @@ class BillController extends Controller
         $this->email = $email;
         $this->bill = $bill;
     }
-
-
     public function index(){
         $data = $this->bill->getBillData();
         return view('admin.bill.index',compact('data'));
     }
     public function deleted(){
-        $data = $this->getDeleteList();
+        $data = $this->bill->getDeleteList();
         return view('admin.bill.deleted',compact('data'));
     }
-    public function getListData(){
-        $data = Bill::orderBy('id','desc')->get();
-        return $data;
-    }
-    public function getDeleteList(){
-        $data = Bill::withTrashed()->orderBy('id','desc')->get();
-        return $data;
-    }
+
     public function getList(){
-        $data = $this->getListData();
+        $data = $this->bill->getBillData();
         return view('admin.bill.table_body',compact('data'));
     }
     public function delete(Request $request){

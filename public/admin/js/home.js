@@ -8,7 +8,7 @@ function getByTime(id) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         data:{
-            time:time
+            time:time,
         },
         success:function(data) {
             hideLoading()

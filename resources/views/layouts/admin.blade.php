@@ -61,7 +61,7 @@
         <div class="page-header-inner ">
             <!-- logo start -->
             <div class="page-logo">
-                <a href="index.html">
+                <a href="{{route('admin.index')}}">
                     <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
                     <span class="logo-default" >{{ config('app.name', 'YOYO') }}</span> </a>
             </div>

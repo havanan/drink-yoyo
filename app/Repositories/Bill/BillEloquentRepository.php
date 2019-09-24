@@ -72,4 +72,8 @@ class BillEloquentRepository implements BillRepositoryInterface
         $data = $data->get();
         return $data;
     }
+    public function getDeleteList(){
+        $data = Bill::withTrashed()->orderBy('id','desc')->get();
+        return $data;
+    }
 }

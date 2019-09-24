@@ -19,4 +19,5 @@ interface BillRepositoryInterface
     public function getTotalBill($params);
     public function getMoneyByMonth($month);
     public function getByDate(array $dates);
+    public function getDeleteList();
 }
