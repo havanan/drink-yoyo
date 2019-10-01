@@ -86,6 +86,20 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span class="title">Thống Kê - Báo Cáo</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item ">
+                            <a href="{{route('admin.report.index')}}" class="nav-link ">
+                                <span class="title">Doanh Thu</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item  ">
                     <a href="#" class="nav-link nav-toggle"> <i class="material-icons text-danger">error_outline</i>
                         <span class="title text-danger">Chưa Hoàn Thiện</span>

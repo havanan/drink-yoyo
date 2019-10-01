@@ -21,6 +21,7 @@ Route::prefix('admin')->group(function() {
         require_once "backend/product.php";
         require_once "backend/product_type.php";
         require_once "backend/bill.php";
+        require_once "backend/report.php";
         require_once "backend/material.php";
         require_once "backend/setting.php";
         require_once "backend/warehouse.php";

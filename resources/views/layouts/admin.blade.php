@@ -50,6 +50,7 @@
     <script>
         var chagePassUrl = '{{'admin.user.changePass'}}';
     </script>
+    <script src="{{asset('admin/assets/moment.min.js')}}" ></script>
     <script src="{{asset('admin/js/home.js')}}" ></script>
     @yield('js-top')
 </head>

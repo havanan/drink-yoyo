@@ -72,6 +72,14 @@ class BillEloquentRepository implements BillRepositoryInterface
         $data = $data->get();
         return $data;
     }
+    public function getBillByMonth($month){
+        $data = Bill::orderBy('bills.id','desc');
+        $data = $data->leftJoin('users','users.id','bills.staff_id');
+        $data = $data->select('bills.*')->selectRaw('users.name as staff_name');
+        $data = $data->whereMonth('bills.created_at',$month);
+        $data = $data->get();
+        return $data;
+    }
     public function getDeleteList(){
         $data = Bill::withTrashed()->orderBy('id','desc')->get();
         return $data;

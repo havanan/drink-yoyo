@@ -16,6 +16,7 @@ interface BillRepositoryInterface
 {
     public function getTotalDB($params);
     public function getBillData($params = false);
+    public function getBillByMonth($month);
     public function getTotalBill($params);
     public function getMoneyByMonth($month);
     public function getByDate(array $dates);

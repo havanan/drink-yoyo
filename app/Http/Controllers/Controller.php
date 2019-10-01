@@ -111,5 +111,38 @@ class Controller extends BaseController
         }
         return $date;
     }
+    public function getDateTitle($time_type){
+
+        switch ($time_type){
+            case $time_type == 'yesterday':
+                $data = Carbon::now()->subDay()->format('d/m/Y');
+                break;
+            case $time_type == 'weekly':
+                $week = $this->getWeek();
+                $data = $week[0].' -> '.$week[1];
+                break;
+            case $time_type == 'monthly':
+                $month = $this->getMonth();
+                $data = $month[0].' -> '.$month[1];
+                break;
+            default:
+                $data = Carbon::now()->format('d/m/Y');
+        }
+        return $data;
+    }
+    public function convertLineData($data_db){
+        $chart = array();
+        $labels = array();
+        $data = array();
+        if (count($data_db) > 0){
+            foreach ($data_db as $key => $item){
+                $labels[$key] = date('d/m/Y',strtotime($item->date));
+                $data[$key] = (float) $item->total;
+            }
+        }
+        $chart['labels'] = $labels;
+        $chart['data'] = $data;
+        return $chart;
+    }
 
 }
