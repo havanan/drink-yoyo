@@ -102,7 +102,7 @@
                 </li>
                 <li class="nav-item  ">
                     <a href="#" class="nav-link nav-toggle"> <i class="material-icons text-danger">error_outline</i>
-                        <span class="title text-danger">Chưa Hoàn Thiện</span>
+                        <span class="title text-danger">Chưa Hoàn Thiện Đâu</span>
                     </a>
                 </li>
                 <li class="nav-item">
