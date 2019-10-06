@@ -54,36 +54,35 @@ function getByDate() {
     var f_date = getInputVal('f_date');
     var t_date = getInputVal('t_date');
     checkFTDate(f_date, t_date);
+    showLoading();
+    $.ajax({
+        type:'Post',
+        url:urlDate,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            f_date:f_date,
+            t_date:t_date,
+        },
+        success:function(data) {
+            hideLoading()
+            if (data != null){
 
-    // showLoading();
-    // $.ajax({
-    //     type:'Post',
-    //     url:urlList,
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     },
-    //     data:{
-    //         f_date:f_date,
-    //         t_date:t_date,
-    //     },
-    //     success:function(data) {
-    //         hideLoading()
-    //         if (data != null){
-    //
-    //             $('#dashboard-data').html(data);
-    //         }else {
-    //             swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
-    //
-    //         }
-    //     },
-    //     error:function () {
-    //         hideLoading()
-    //         swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
-    //     },
-    //     done:function () {
-    //         hideLoading()
-    //     }
-    // });
+                $('#dashboard-data').html(data);
+            }else {
+                swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+
+            }
+        },
+        error:function () {
+            hideLoading()
+            swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+        },
+        done:function () {
+            hideLoading()
+        }
+    });
 }
 function getSelectVal(id) {
     return $('#'+id).val();

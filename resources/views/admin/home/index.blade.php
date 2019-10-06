@@ -57,7 +57,7 @@
         <div class="col-md-12">
             <div class="card card-box">
                 <div class="card-head">
-                    <header>Biểu Đồ Bán Hàng Trong Tháng</header>
+                    <header>Biểu Đồ Tăng Trưởng</header>
                     <div class="tools">
                         <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                         <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>

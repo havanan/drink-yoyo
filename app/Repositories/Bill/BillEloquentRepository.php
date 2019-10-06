@@ -34,6 +34,14 @@ class BillEloquentRepository implements BillRepositoryInterface
         $data = Bill::selectRaw('sum(price_final) as total, date(created_at) as date')->groupBy(DB::raw('DATE(created_at)'))->whereMonth('created_at',$month)->get();
         return $data;
     }
+    public function getMoneyByDate($params){
+        $data = Bill::selectRaw('sum(price_final) as total, date(created_at) as date')->groupBy(DB::raw('DATE(created_at)'));
+        if (isset($params['month'])){
+            $data = $data->whereBetween('created_at',$params['month']);
+        }
+        $data = $data->get();
+        return $data;
+    }
     public function getByDate(array $dates){
         $data = array();
         foreach ($dates as $key=>$item){
@@ -54,6 +62,12 @@ class BillEloquentRepository implements BillRepositoryInterface
             $date['month'] = $params['week'];
             $totalBill = $this->getTotalDB($date);
         }
+        return $totalBill;
+    }
+    public function getTotalBillByMonth($params){
+        $data = Bill::selectRaw('count(id) as amount,sum(price_final) as money');
+        $data = $data->whereMonth('bills.created_at',$params['month']);
+        $totalBill = $data->first();
         return $totalBill;
     }
     public function getBillData($params = false){

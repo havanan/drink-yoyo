@@ -9,13 +9,9 @@
     <link href="{{asset('admin/assets/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 @section('js')
-    <!-- chart js -->
-    <script src="{{asset('admin/assets/chart-js/Chart.bundle.js')}}" ></script>
-    <script src="{{asset('admin/assets/chart-js/utils.js')}}" ></script>
     <script>
         var urlList = '{{route('admin.report.findData')}}';
-        var data_db =<?php echo $chartBillMonth ?>;
-        makeLineChart('',data_db);
+        var urlDate = '{{route('admin.report.findDataByDate')}}'
     </script>
 @endsection
 @section('js-top')
@@ -23,6 +19,9 @@
     <script src="{{asset('admin/assets/datatables/jquery.dataTables.min.js')}}" ></script>
     <script src="{{asset('admin/assets/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js')}}" ></script>
     <script src="{{asset('admin/js/datatable-init.js')}}" ></script>
+    <!-- chart js -->
+    <script src="{{asset('admin/assets/chart-js/Chart.bundle.js')}}" ></script>
+    <script src="{{asset('admin/assets/chart-js/utils.js')}}" ></script>
 @endsection
 @section('content')
     <!-- start widget -->
@@ -72,25 +71,6 @@
     <div id="dashboard-data">
         @include('admin.report.dashboard_data')
     </div>
-    <!-- chart start -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card card-box">
-                <div class="card-head">
-                    <header>Biểu Đồ Bán Hàng Trong Tháng</header>
-                    <div class="tools">
-                        <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
-                        <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
-                        <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
-                    </div>
-                </div>
-                <div class="card-body no-padding height-9">
-                    <div class="row">
-                        <canvas id="chartjs_line"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 @endsection

@@ -8,7 +8,7 @@
                     <span class="info-box-text">Tổng Đơn</span>
                     <span class="info-box-number">{{$data['totalBill']['amount']}}</span><span> đơn</span>
                     <div class="progress">
-                        <div class="progress-bar" style="width: {{$data['billPercent']}}%"></div>
+                        <div class="progress-bar" style="width: 100%"></div>
                     </div>
                 </div>
                 <!-- /.info-box-content -->
@@ -23,7 +23,7 @@
                     <span class="info-box-text">Tổng Tiền</span>
                     <span class="info-box-number">{{number_format($data['totalBill']['money'])}}</span><span> vnđ</span>
                     <div class="progress">
-                        <div class="progress-bar" style="width: {{$data['billPercentMoney']}}%"></div>
+                        <div class="progress-bar" style="width: 100%"></div>
                     </div>
                 </div>
                 <!-- /.info-box-content -->
@@ -86,7 +86,28 @@
     </div>
 </div>
 <!-- end admited patient list -->
-
+<!-- chart start -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-box">
+            <div class="card-head">
+                <header>Biểu Đồ Tăng Trưởng</header>
+                <div class="tools">
+                    <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close btn-color fa fa-times" href="javascript:;"></a>
+                </div>
+            </div>
+            <div class="card-body no-padding height-9">
+                <div class="row">
+                    <canvas id="chartjs_line"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     dataTableDefautl('dataTable');
+    var data_db =<?php echo $data['chartBillMonth'] ?>;
+    makeLineChart('',data_db);
 </script>
