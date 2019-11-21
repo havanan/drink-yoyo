@@ -943,3 +943,6 @@ tr.group:hover {
 .mdl-progress{
     width: auto;
 }
+.name{
+    text-transform: capitalize;
+}

@@ -11,6 +11,8 @@ class ProductCategory extends Model implements LogsActivityInterface
     use LogsActivity;
     protected static $logAttributes = ['*'];
     protected static $logOnlyDirty = true;
+    protected $fillable = ['name','status'];
+
     public function getActivityDescriptionForEvent($eventName)
     {
         if ($eventName == 'created')

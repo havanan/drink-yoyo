@@ -49,6 +49,21 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link nav-toggle">
+                        <i class="material-icons">widgets</i>
+                        <span class="title">Loại SP</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+
+                        <li class="nav-item ">
+                            <a href="{{route('admin.product_type.index')}}" class="nav-link ">
+                                <span class="title">Danh Sách</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-toggle">
                         <i class="material-icons">assignment_turned_in</i>
                         <span class="title">Hóa đơn</span>
                         <span class="arrow"></span>
