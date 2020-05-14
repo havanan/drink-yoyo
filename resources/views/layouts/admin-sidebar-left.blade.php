@@ -113,6 +113,11 @@
                                 <span class="title">Doanh Thu</span>
                             </a>
                         </li>
+                        <li class="nav-item ">
+                            <a href="{{route('admin.report.drink')}}" class="nav-link ">
+                                <span class="title">Đồ uống ưa thích</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item  ">

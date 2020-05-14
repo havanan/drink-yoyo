@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Model\BillProduct;
+use App\Model\ProductType;
 use App\Repositories\Bill\BillEloquentRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -59,6 +62,35 @@ class ReportController extends Controller
         $data['billData'] = $this->bill->getBillByMonth($params['month']);
         $chartBillMonth = $this->getLineChart(['month' => $params['month']]);
         $data['chartBillMonth'] = json_encode($chartBillMonth);
+        return $data;
+    }
+    public function getDateType(Request $request){
+        $date_type = $request->get('date_type');
+        return view('admin.report.date_type',compact('date_type'));
+    }
+    public function drink(){
+        $types = ProductType::where('status',1)->pluck('name','id');
+        $params = [];
+        $data = $this->findDrink($params);
+        $date_type = request('date_type') != null ? request('date_type') : 'date';
+        return view('admin.report.drink',compact('data','types','date_type'));
+    }
+    public function findDrinkByDateType(Request $request){
+        dd($request->all());
+    }
+    public function findDrink($params){
+        $data = BillProduct::join('products','products.id','bill_products.product_id')
+            ->select(
+            'products.name','bill_products.product_id','products.avatar',
+            DB::raw('Count(bill_products.product_id) as count_product')
+        );
+        if (isset($params['year']) && $params['year'] != null){
+            $data = $data->whereMonth('bill_products.created_at',$params['month'])->whereYear('bill_products.created_at',$params['year']);
+        }
+        if (isset($params['type_id']) && $params['type_id'] != null){
+            $data = $data->whereMonth('products.type_id',$params['type_id']);
+        }
+        $data = $data->groupBy('products.name','bill_products.product_id','products.avatar')->orderBy('count_product','desc')->limit(10)->get();
         return $data;
     }
 }

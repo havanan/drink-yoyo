@@ -1,3 +1,69 @@
+function getDateType() {
+    var date_type = getSelectVal('slt-date-type');
+    console.log(date_type)
+    showLoading();
+    $.ajax({
+        type:'get',
+        url:urlDateType,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            date_type:date_type,
+
+        },
+        success:function(data) {
+            hideLoading()
+            if (data != null){
+                $('#ipt-date-type').html(data);
+            }else {
+                swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+
+            }
+        },
+        error:function () {
+            hideLoading()
+            swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+        },
+        done:function () {
+            hideLoading()
+        }
+    });
+}
+function findDrink() {
+    var f_date = getInputVal('f_date');
+    var t_date = getInputVal('t_date');
+    checkFTDate(f_date, t_date);
+    showLoading();
+    $.ajax({
+        type:'Post',
+        url:urlList,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data:{
+            f_date:f_date,
+            t_date:t_date,
+        },
+        success:function(data) {
+            hideLoading()
+            if (data != null){
+
+                $('#dashboard-data').html(data);
+            }else {
+                swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+
+            }
+        },
+        error:function () {
+            hideLoading()
+            swal("Lỗi", "Vui lòng ấn F5 trên bàn phím", "error");
+        },
+        done:function () {
+            hideLoading()
+        }
+    });
+}
 function getByTime(id) {
    var time = getSelectVal(id);
    showLoading();
