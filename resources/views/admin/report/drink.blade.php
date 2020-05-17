@@ -13,6 +13,9 @@
         var urlList = '{{route('admin.report.findDrinkByDateType')}}';
         var urlDateType = '{{route('admin.report.getDateType')}}';
     </script>
+    <script>
+    dataTableDefautl('dataTable');
+</script>
 @endsection
 @section('js-top')
     <!-- data table -->
@@ -25,7 +28,7 @@
 @endsection
 @section('content')
     <!-- start widget -->
-    <div class="row">
+   <!--  <div class="row">
         <div class="col-md-12">
             <div class="card card-topline-red">
                 <div class="card-body no-padding height-9">
@@ -63,9 +66,44 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div id="dashboard-data">
-
+        <div class="row">
+            <div class="col-md-12">
+               
+                <div class="card card-box">
+                    <div class="card-body ">
+                        <div class="table-wrap">
+                    <div class="table-responsive">
+                        <table id="dataTable" style="width: 100%">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                            
+                                <th>Tên đồ uống</th>
+                                <th>Số lượng cốc</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                @if(count($data) >0)
+                                    @foreach($data as $key => $item)
+                                        <tr>
+                                            <td>{{$key+1}}</td>
+                                            <td> <img src="{{$item->avatar != null ? asset($item->avatar) : ''}}" width="50px">{{$item->name}}</td>
+                                            <td>{{number_format($item->count_product)}}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif        
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
     </div>
 
 

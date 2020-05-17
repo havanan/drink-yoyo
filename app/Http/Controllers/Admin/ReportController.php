@@ -70,7 +70,9 @@ class ReportController extends Controller
     }
     public function drink(){
         $types = ProductType::where('status',1)->pluck('name','id');
-        $params = [];
+        $params = [
+            'type_id'=> [1,2,11,12]
+        ];
         $data = $this->findDrink($params);
         $date_type = request('date_type') != null ? request('date_type') : 'date';
         return view('admin.report.drink',compact('data','types','date_type'));
@@ -82,15 +84,15 @@ class ReportController extends Controller
         $data = BillProduct::join('products','products.id','bill_products.product_id')
             ->select(
             'products.name','bill_products.product_id','products.avatar',
-            DB::raw('Count(bill_products.product_id) as count_product')
+            DB::raw('Count(bill_products.product_id) as count_product'),
         );
         if (isset($params['year']) && $params['year'] != null){
             $data = $data->whereMonth('bill_products.created_at',$params['month'])->whereYear('bill_products.created_at',$params['year']);
         }
         if (isset($params['type_id']) && $params['type_id'] != null){
-            $data = $data->whereMonth('products.type_id',$params['type_id']);
+            $data = $data->whereIn('products.type_id',$params['type_id']);
         }
-        $data = $data->groupBy('products.name','bill_products.product_id','products.avatar')->orderBy('count_product','desc')->limit(10)->get();
+        $data = $data->groupBy('products.name','bill_products.product_id','products.avatar')->orderBy('count_product','desc')->get();
         return $data;
     }
 }
