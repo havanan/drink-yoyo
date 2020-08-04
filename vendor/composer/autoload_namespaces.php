@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Spatie\\Activitylog\\' => array($vendorDir . '/spatie/activitylog/src'),
-    'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
 );

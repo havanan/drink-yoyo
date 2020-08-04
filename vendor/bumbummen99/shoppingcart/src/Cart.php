@@ -2,6 +2,7 @@
 
 namespace Gloudemans\Shoppingcart;
 
+use Carbon\Carbon;
 use Closure;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Gloudemans\Shoppingcart\Contracts\InstanceIdentifier;
@@ -39,6 +40,20 @@ class Cart
     private $instance;
 
     /**
+     * Holds the creation date of the cart.
+     *
+     * @var mixed
+     */
+    private $createdAt;
+
+    /**
+     * Holds the update date of the cart.
+     *
+     * @var mixed
+     */
+    private $updatedAt;
+
+    /**
      * Defines the discount percentage.
      *
      * @var float
@@ -46,7 +61,7 @@ class Cart
     private $discount = 0;
 
     /**
-     * Defines the discount percentage.
+     * Defines the tax rate.
      *
      * @var float
      */
@@ -126,13 +141,14 @@ class Cart
     /**
      * Add an item to the cart.
      *
-     * @param \Gloudemans\Shoppingcart\CartItem $item         Item to add to the Cart
-     * @param bool                              $keepDiscount Keep the discount rate of the Item
-     * @param bool                              $keepTax      Keep the Tax rate of the Item
+     * @param \Gloudemans\Shoppingcart\CartItem $item          Item to add to the Cart
+     * @param bool                              $keepDiscount  Keep the discount rate of the Item
+     * @param bool                              $keepTax       Keep the Tax rate of the Item
+     * @param bool                              $dispatchEvent
      *
      * @return \Gloudemans\Shoppingcart\CartItem The CartItem
      */
-    public function addCartItem($item, $keepDiscount = false, $keepTax = false)
+    public function addCartItem($item, $keepDiscount = false, $keepTax = false, $dispatchEvent = true)
     {
         if (!$keepDiscount) {
             $item->setDiscountRate($this->discount);
@@ -150,7 +166,9 @@ class Cart
 
         $content->put($item->rowId, $item);
 
-        $this->events->dispatch('cart.added', $item);
+        if ($dispatchEvent) {
+            $this->events->dispatch('cart.added', $item);
+        }
 
         $this->session->put($this->instance, $content);
 
@@ -180,6 +198,8 @@ class Cart
         $content = $this->getContent();
 
         if ($rowId !== $cartItem->rowId) {
+            $itemOldIndex = $content->keys()->search($rowId);
+
             $content->pull($rowId);
 
             if ($content->has($cartItem->rowId)) {
@@ -193,7 +213,13 @@ class Cart
 
             return;
         } else {
-            $content->put($cartItem->rowId, $cartItem);
+            if (isset($itemOldIndex)) {
+                $content = $content->slice(0, $itemOldIndex)
+                    ->merge([$cartItem->rowId => $cartItem])
+                    ->merge($content->slice($itemOldIndex));
+            } else {
+                $content->put($cartItem->rowId, $cartItem);
+            }
         }
 
         $this->events->dispatch('cart.updated', $cartItem);
@@ -364,7 +390,7 @@ class Cart
     }
 
     /**
-     * Get the subtotal (total - tax) of the items in the cart.
+     * Get the discount of the items in the cart.
      *
      * @return float
      */
@@ -376,7 +402,7 @@ class Cart
     }
 
     /**
-     * Get the subtotal (total - tax) of the items in the cart as formatted string.
+     * Get the discount of the items in the cart as formatted string.
      *
      * @param int    $decimals
      * @param string $decimalPoint
@@ -390,7 +416,7 @@ class Cart
     }
 
     /**
-     * Get the subtotal (total - tax) of the items in the cart.
+     * Get the price of the items in the cart (not rounded).
      *
      * @return float
      */
@@ -402,7 +428,7 @@ class Cart
     }
 
     /**
-     * Get the subtotal (total - tax) of the items in the cart as formatted string.
+     * Get the price of the items in the cart as formatted string.
      *
      * @param int    $decimals
      * @param string $decimalPoint
@@ -413,6 +439,32 @@ class Cart
     public function initial($decimals = null, $decimalPoint = null, $thousandSeperator = null)
     {
         return $this->numberFormat($this->initialFloat(), $decimals, $decimalPoint, $thousandSeperator);
+    }
+
+    /**
+     * Get the price of the items in the cart (previously rounded).
+     *
+     * @return float
+     */
+    public function priceTotalFloat()
+    {
+        return $this->getContent()->reduce(function ($initial, CartItem $cartItem) {
+            return $initial + $cartItem->priceTotal;
+        }, 0);
+    }
+
+    /**
+     * Get the price of the items in the cart as formatted string.
+     *
+     * @param int    $decimals
+     * @param string $decimalPoint
+     * @param string $thousandSeperator
+     *
+     * @return string
+     */
+    public function priceTotal($decimals = null, $decimalPoint = null, $thousandSeperator = null)
+    {
+        return $this->numberFormat($this->priceTotalFloat(), $decimals, $decimalPoint, $thousandSeperator);
     }
 
     /**
@@ -581,6 +633,8 @@ class Cart
             'identifier' => $identifier,
             'instance'   => $this->currentInstance(),
             'content'    => serialize($content),
+            'created_at' => $this->createdAt ?: Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         $this->events->dispatch('cart.stored');
@@ -624,8 +678,32 @@ class Cart
 
         $this->instance($currentInstance);
 
-        $this->getConnection()->table($this->getTableName())
-            ->where('identifier', $identifier)->delete();
+        $this->createdAt = Carbon::parse(data_get($stored, 'created_at'));
+        $this->updatedAt = Carbon::parse(data_get($stored, 'updated_at'));
+
+        $this->getConnection()->table($this->getTableName())->where('identifier', $identifier)->delete();
+    }
+
+    /**
+     * Erase the cart with the given identifier.
+     *
+     * @param mixed $identifier
+     *
+     * @return void
+     */
+    public function erase($identifier)
+    {
+        if ($identifier instanceof InstanceIdentifier) {
+            $identifier = $identifier->getInstanceIdentifier();
+        }
+
+        if (!$this->storedCartWithIdentifierExists($identifier)) {
+            return;
+        }
+
+        $this->getConnection()->table($this->getTableName())->where('identifier', $identifier)->delete();
+
+        $this->events->dispatch('cart.erased');
     }
 
     /**
@@ -634,10 +712,11 @@ class Cart
      * @param mixed $identifier   Identifier of the Cart to merge with.
      * @param bool  $keepDiscount Keep the discount of the CartItems.
      * @param bool  $keepTax      Keep the tax of the CartItems.
+     * @param bool  $dispatchAdd  Flag to dispatch the add events.
      *
      * @return bool
      */
-    public function merge($identifier, $keepDiscount = false, $keepTax = false)
+    public function merge($identifier, $keepDiscount = false, $keepTax = false, $dispatchAdd = true)
     {
         if (!$this->storedCartWithIdentifierExists($identifier)) {
             return false;
@@ -649,8 +728,10 @@ class Cart
         $storedContent = unserialize($stored->content);
 
         foreach ($storedContent as $cartItem) {
-            $this->addCartItem($cartItem, $keepDiscount, $keepTax);
+            $this->addCartItem($cartItem, $keepDiscount, $keepTax, $dispatchAdd);
         }
+
+        $this->events->dispatch('cart.merged');
 
         return true;
     }
@@ -802,5 +883,25 @@ class Cart
         }
 
         return number_format($value, $decimals, $decimalPoint, $thousandSeperator);
+    }
+
+    /**
+     * Get the creation date of the cart (db context).
+     *
+     * @return \Carbon\Carbon|null
+     */
+    public function createdAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Get the lats update date of the cart (db context).
+     *
+     * @return \Carbon\Carbon|null
+     */
+    public function updatedAt()
+    {
+        return $this->updatedAt;
     }
 }
